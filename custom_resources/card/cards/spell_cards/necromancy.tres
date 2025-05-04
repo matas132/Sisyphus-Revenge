@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellCard" load_steps=4 format=3 uid="uid://4p2ws2bqlvu2"]
+
+[ext_resource type="Script" uid="uid://ke1opamcs7yi" path="res://custom_resources/card/spawning_card/spell_card/spell_card.gd" id="1_2ctmi"]
+[ext_resource type="Texture2D" uid="uid://cnlc4jm081qhu" path="res://assets/Entities/cards/card_desc/Necromancy Thanatos Description.png" id="1_2dqq3"]
+[ext_resource type="Texture2D" uid="uid://demxx0s51qnou" path="res://assets/Entities/cards/spell/Necromancy Thanatos card.png" id="1_31ykr"]
+
+[resource]
+script = ExtResource("1_2ctmi")
+instant_use = false
+entity_file_path = "uid://drbhdi1uw86jb"
+title = ""
+image = ExtResource("1_31ykr")
+description = ""
+sound_path = ""
+desc_image = ExtResource("1_2dqq3")
+metadata/_custom_type_script = "uid://ke1opamcs7yi"

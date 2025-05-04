@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh6lwyyvwwhmh"]
+
+[ext_resource type="Script" uid="uid://ckgk7h54vr652" path="res://entities/game_entities/enemy/Boss/chaos/head/head.gd" id="1_4j6oq"]
+[ext_resource type="PackedScene" uid="uid://cdhfslsnlabfx" path="res://entities/game_entities/visuals/Chaos/chaos_head_graphics.tscn" id="3_asb7u"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="3_ladak"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="4_8i2gg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4j6oq"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ladak"]
+radius = 640.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8i2gg"]
+radius = 400.0
+
+[node name="Head" type="CharacterBody2D"]
+script = ExtResource("1_4j6oq")
+max_health = 2000.0
+health = 2000.0
+metadata/_custom_type_script = "uid://crqan3j48afjr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4j6oq")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_ladak")
+debug_color = Color(0, 0.6, 0.701961, 0.164706)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_8i2gg")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_ladak")]
+offset_top = 106.0
+offset_bottom = 123.0
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[node name="Sprite" parent="." instance=ExtResource("3_asb7u")]
+position = Vector2(0, 41)
+
+[node name="SpawnSound" type="Node2D" parent="."]
+script = ExtResource("4_8i2gg")
+event_path = "SFX/Unit/ChaosScream"
+metadata/_custom_type_script = "uid://k536wrjv8lmy"
+
+[node name="StunSound" type="Node2D" parent="."]
+script = ExtResource("4_8i2gg")
+event_path = "SFX/Unit/ChaosStun"
+metadata/_custom_type_script = "uid://k536wrjv8lmy"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]

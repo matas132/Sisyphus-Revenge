@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="AudioMSoundComposition" load_steps=8 format=3 uid="uid://b02itlub8frbu"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_10350"]
+[ext_resource type="Resource" uid="uid://dnfdm5t4ei32d" path="res://assets/audio/music/battle_layer_01.tres" id="2_10350"]
+[ext_resource type="Script" uid="uid://cqjmyf666ola0" path="res://addons/audiom/classes/sound_parameter.gd" id="3_vwenf"]
+[ext_resource type="Script" uid="uid://6riv127out4" path="res://addons/audiom/classes/sound_composition.gd" id="4_benmu"]
+[ext_resource type="Script" uid="uid://cgt6v0cuyb8hd" path="res://addons/audiom/classes/sound_modulation.gd" id="4_stprc"]
+
+[sub_resource type="Resource" id="Resource_vwenf"]
+script = ExtResource("4_stprc")
+property = 1
+layer_index = 0
+amount = 2.0
+metadata/_custom_type_script = "uid://cgt6v0cuyb8hd"
+
+[sub_resource type="Resource" id="Resource_benmu"]
+script = ExtResource("3_vwenf")
+name = "boss"
+global = true
+initial_value = 0.0
+seek_time = 0.0
+modulations = Array[ExtResource("4_stprc")]([SubResource("Resource_vwenf")])
+metadata/_custom_type_script = "uid://cqjmyf666ola0"
+
+[resource]
+script = ExtResource("4_benmu")
+layers = Array[ExtResource("1_10350")]([ExtResource("2_10350")])
+volume = 0.4
+volume_mod_mixing = 1
+pitch = 0.0
+pitch_mod_mixing = 0
+repeat = false
+repeat_interval = 1.0
+interrupt_voices_on_stop = false
+override_enter_time = false
+enter_time = 0.0
+override_leave_time = false
+leave_time = 4.0
+parameters = Array[ExtResource("3_vwenf")]([SubResource("Resource_benmu")])
+affect_active_voices = true
+metadata/_custom_type_script = "uid://6riv127out4"

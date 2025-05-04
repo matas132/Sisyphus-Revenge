@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=3 format=3 uid="uid://dabc15tu45wbo"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_ukv2a"]
+[ext_resource type="AudioStream" uid="uid://cnq5kxf0df8yi" path="res://assets/audio/SoundEffects/spells/empower.ogg" id="2_biyqj"]
+
+[resource]
+script = ExtResource("1_ukv2a")
+stream = Array[AudioStream]([ExtResource("2_biyqj")])
+pool_behavior = 0
+priority = 0
+volume = 1.0
+volume_variation = 0.0
+volume_mod_mixing = 1
+bus = 2
+enter_time = 0.0
+leave_time = 0.2
+pitch = 0.0
+pitch_variation = 0.02
+pitch_mod_mixing = 0
+attenuation = 0.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"

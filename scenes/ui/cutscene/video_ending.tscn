@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c60m3mrwh7uan"]
+
+[ext_resource type="VideoStream" uid="uid://dg4nayy82uu8j" path="res://assets/video/outro_FINAL.ogv" id="1_opbtn"]
+[ext_resource type="Script" uid="uid://bedyj7gvnunuy" path="res://scenes/ui/cutscene/video.gd" id="2_0pq0g"]
+
+[node name="VideoEnding" type="VideoStreamPlayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+focus_mode = 2
+stream = ExtResource("1_opbtn")
+autoplay = true
+script = ExtResource("2_0pq0g")

@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3 uid="uid://e5oe48t3vehs"]
+
+[ext_resource type="Script" uid="uid://dndwlbofuop0k" path="res://scenes/ui/menus/buttons/button_with_sound.gd" id="1_b07b4"]
+[ext_resource type="Script" uid="uid://xrt3wnoemdth" path="res://scenes/ui/menus/settings/damage_number_button.gd" id="2_ann44"]
+
+[sub_resource type="Gradient" id="Gradient_h2yrv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_doctc"]
+gradient = SubResource("Gradient_h2yrv")
+fill_to = Vector2(0, 1)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.513726)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture2D_doctc")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SettingsLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="AudioSettingsButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Audio settings"
+script = ExtResource("1_b07b4")
+
+[node name="DamageNumberButton" type="CheckButton" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+button_pressed = true
+text = "Damage numbers"
+script = ExtResource("2_ann44")
+
+[node name="Control2" type="Control" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ToTitleButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+script = ExtResource("1_b07b4")
+
+[connection signal="toggled" from="MarginContainer/TextureRect/MarginContainer/VBoxContainer/DamageNumberButton" to="MarginContainer/TextureRect/MarginContainer/VBoxContainer/DamageNumberButton" method="_on_toggled"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://r5dskykrnw10"]
+
+[ext_resource type="Script" uid="uid://ogasbp23ept6" path="res://entities/game_entities/Spells_&_Projectiles/whirlwind/whirlwind.gd" id="1_rq726"]
+[ext_resource type="PackedScene" uid="uid://dcp4bto5nm525" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/whirlwind/whirlwind.tscn" id="2_fjsbj"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="3_v8t0o"]
+
+[sub_resource type="Gradient" id="Gradient_aowyb"]
+offsets = PackedFloat32Array(0, 0.545455, 1)
+colors = PackedColorArray(0.545098, 0.611765, 0.545098, 1, 1, 0.972549, 0.988235, 1, 1, 0.789754, 0.98664, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dn1fp"]
+gradient = SubResource("Gradient_aowyb")
+width = 350
+height = 350
+fill = 1
+fill_from = Vector2(0.512821, 0.478632)
+fill_to = Vector2(0.833333, 0.773504)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aowyb"]
+radius = 103.044
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rq726"]
+radius = 252.448
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8t0o"]
+radius = 38.1182
+
+[node name="Whirlwind" type="Node2D"]
+script = ExtResource("1_rq726")
+speed = 100.0
+damage = 70.0
+duration = 45.0
+duration_reset = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_dn1fp")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="DamageAreaCollision" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_aowyb")
+disabled = true
+
+[node name="ChangeDirection" type="Timer" parent="."]
+
+[node name="Duration" type="Timer" parent="."]
+
+[node name="SuckInArea" type="Area2D" parent="."]
+
+[node name="SuckInAreaCollision" type="CollisionShape2D" parent="SuckInArea"]
+shape = SubResource("CircleShape2D_rq726")
+disabled = true
+debug_color = Color(1, 1, 1, 0.321569)
+
+[node name="Whirlwind" parent="." instance=ExtResource("2_fjsbj")]
+position = Vector2(10, 28)
+scale = Vector2(1.08, 1.08)
+
+[node name="WhirlwindSound" type="Node2D" parent="."]
+script = ExtResource("3_v8t0o")
+event_path = "SFX/Spells/Whirlwind"
+
+[node name="WallDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
+shape = SubResource("CircleShape2D_v8t0o")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="timeout" from="ChangeDirection" to="." method="_on_change_direction_timeout"]
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]
+[connection signal="body_entered" from="SuckInArea" to="." method="_on_suck_in_area_body_entered"]
+[connection signal="body_entered" from="WallDetector" to="." method="_on_wall_detector_body_entered"]

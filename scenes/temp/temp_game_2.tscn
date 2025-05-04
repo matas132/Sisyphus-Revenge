@@ -1,0 +1,153 @@
+[gd_scene load_steps=27 format=3 uid="uid://ddt4p8s0gp4vc"]
+
+[ext_resource type="Script" uid="uid://bb8el1wdsrt4i" path="res://scenes/temp/temp_game.gd" id="1_f6xba"]
+[ext_resource type="PackedScene" uid="uid://cerqcco34sqtu" path="res://scenes/ui/gameplay/card_system/hand/hand.tscn" id="2_5o34m"]
+[ext_resource type="Script" uid="uid://bguln1wquwalr" path="res://scenes/temp/card_giver.gd" id="3_vmf5j"]
+[ext_resource type="Script" uid="uid://crmmdya24qvnn" path="res://custom_resources/card_spawning/card_spawn.gd" id="4_ndqxg"]
+[ext_resource type="Resource" uid="uid://dl5yfkakn3oon" path="res://custom_resources/game_cards/entities/hoplite.tres" id="5_4lka2"]
+[ext_resource type="Resource" uid="uid://dahxrn3a70l2l" path="res://custom_resources/game_cards/entities/mage_card.tres" id="6_gdu7t"]
+[ext_resource type="Resource" uid="uid://dqjtwvixdtrfv" path="res://custom_resources/game_cards/entities/summoner.tres" id="7_rpptn"]
+[ext_resource type="Resource" uid="uid://chv2yab8v4isw" path="res://custom_resources/card/cards/spell_cards/lightning_bolt.tres" id="8_oq7nk"]
+[ext_resource type="PackedScene" uid="uid://4erosix0ra28" path="res://entities/game_entities/castle/castle.tscn" id="9_u3wu2"]
+[ext_resource type="Script" uid="uid://d0yank25cmu1j" path="res://scenes/temp/enemy_spawner.gd" id="10_lq7ap"]
+[ext_resource type="Script" uid="uid://bjapcpirpxe82" path="res://custom_resources/enemy_spawning/wave.gd" id="11_fymof"]
+[ext_resource type="Script" uid="uid://51par2err3tp" path="res://custom_resources/enemy_spawning/enemy_spawn.gd" id="12_uvnio"]
+
+[sub_resource type="Resource" id="Resource_56eut"]
+script = ExtResource("4_ndqxg")
+card = ExtResource("5_4lka2")
+weight = 3
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_6hkk6"]
+script = ExtResource("4_ndqxg")
+card = ExtResource("6_gdu7t")
+weight = 3
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_4kmke"]
+script = ExtResource("4_ndqxg")
+card = ExtResource("7_rpptn")
+weight = 1
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_hkkiu"]
+script = ExtResource("4_ndqxg")
+card = ExtResource("8_oq7nk")
+weight = 10
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Curve2D" id="Curve2D_6unlb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1909, 364, 0, 0, 0, 0, 1903, 850, 0, 0, 0, 0, 12, 855, 0, 0, 0, 0, 0, 382)
+}
+point_count = 4
+
+[sub_resource type="Resource" id="Resource_p280t"]
+script = ExtResource("12_uvnio")
+enemy = 0
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_2m65i"]
+script = ExtResource("12_uvnio")
+enemy = 5
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_ca4lq"]
+script = ExtResource("12_uvnio")
+enemy = 3
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_f6xba"]
+script = ExtResource("11_fymof")
+wave_length = 15.0
+enemy_spawn_frequency = 3.0
+enemies = Array[ExtResource("12_uvnio")]([SubResource("Resource_p280t"), SubResource("Resource_2m65i"), SubResource("Resource_ca4lq")])
+metadata/_custom_type_script = "uid://bjapcpirpxe82"
+
+[sub_resource type="Resource" id="Resource_0k1l2"]
+script = ExtResource("12_uvnio")
+enemy = 0
+weight = 9
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_ipqch"]
+script = ExtResource("12_uvnio")
+enemy = 0
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_5o34m"]
+script = ExtResource("11_fymof")
+wave_length = 9999.0
+enemy_spawn_frequency = 1.0
+enemies = Array[ExtResource("12_uvnio")]([SubResource("Resource_0k1l2"), SubResource("Resource_ipqch")])
+metadata/_custom_type_script = "uid://bjapcpirpxe82"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6unlb"]
+size = Vector2(1937, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xapms"]
+size = Vector2(42, 901)
+
+[node name="TempGame" type="Node2D"]
+script = ExtResource("1_f6xba")
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="Hand" parent="GameUI" instance=ExtResource("2_5o34m")]
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="CardGiver" type="Node" parent="."]
+script = ExtResource("3_vmf5j")
+card_gain_interval = 3.3
+available_cards = Array[ExtResource("4_ndqxg")]([SubResource("Resource_56eut"), SubResource("Resource_6hkk6"), SubResource("Resource_4kmke"), SubResource("Resource_hkkiu")])
+
+[node name="CardGainTimer" type="Timer" parent="CardGiver"]
+
+[node name="Castle" parent="." instance=ExtResource("9_u3wu2")]
+position = Vector2(1018, 0)
+
+[node name="EnemySpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6unlb")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemySpawnPath"]
+position = Vector2(1909, 364)
+rotation = 1.58314
+
+[node name="EnemySpawner" type="Node" parent="."]
+script = ExtResource("10_lq7ap")
+waves = Array[ExtResource("11_fymof")]([SubResource("Resource_f6xba"), SubResource("Resource_5o34m")])
+
+[node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
+
+[node name="WaveTimer" type="Timer" parent="EnemySpawner"]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(958.5, -11.5)
+shape = SubResource("RectangleShape2D_6unlb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(958.5, 959)
+shape = SubResource("RectangleShape2D_6unlb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-80, 417.5)
+shape = SubResource("RectangleShape2D_xapms")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2003, 417.5)
+shape = SubResource("RectangleShape2D_xapms")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(1014, 18)
+
+[connection signal="timeout" from="CardGiver/CardGainTimer" to="CardGiver" method="_on_card_gain_timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/EnemySpawnTimer" to="EnemySpawner" method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]

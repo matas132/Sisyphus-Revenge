@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://f1w8rh48yh3x"]
+
+[ext_resource type="Script" uid="uid://cn48vd21shkqy" path="res://entities/game_entities/player_unit/hippeus/hippeus.gd" id="1_rjqff"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_x0wxu"]
+[ext_resource type="PackedScene" uid="uid://egpcrvmqxpr3" path="res://entities/game_entities/visuals/cavalry_a_graphics.tscn" id="4_xbboc"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="5_7res3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0wxu"]
+radius = 40.0347
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbenb"]
+radius = 250.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbboc"]
+radius = 65.0
+
+[node name="Hippeus" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_rjqff")
+damage_rate = 1.0
+damage = 46.0
+speed = 80.0
+animation_attack_delay = 0.5
+max_health = 300.0
+health = 250.0
+metadata/_custom_type_script = "uid://5lyabt5xavge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 13.3333)
+shape = SubResource("CircleShape2D_x0wxu")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_vbenb")
+debug_color = Color(0, 0.6, 0.701961, 0.0509804)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_xbboc")
+debug_color = Color(0, 0.6, 0.701961, 0.301961)
+
+[node name="HealthBar" parent="." instance=ExtResource("2_x0wxu")]
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[node name="ReactTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite" parent="." instance=ExtResource("4_xbboc")]
+position = Vector2(0, 33.3333)
+
+[node name="AttackSound" type="Node2D" parent="."]
+script = ExtResource("5_7res3")
+event_path = "SFX/Unit/AttackHitPierce"
+
+[node name="SwingSound" type="Node2D" parent="."]
+script = ExtResource("5_7res3")
+event_path = "SFX/Unit/AttackSwing"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]
+[connection signal="timeout" from="ReactTimer" to="." method="_on_react_timeout"]

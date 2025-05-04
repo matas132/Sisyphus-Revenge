@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxdi1wh86t6jd"]
+
+[ext_resource type="Script" uid="uid://c0d7a7trhvxvf" path="res://entities/game_entities/Spells_&_Projectiles/lightning_bolt/lightning_bolt.gd" id="1_hqhgm"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="2_l0k6y"]
+[ext_resource type="PackedScene" uid="uid://crl3dm70rxpqa" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/lightningBolt/lightning.tscn" id="3_ajakw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqhgm"]
+radius = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0k6y"]
+radius = 804.0
+
+[node name="LightningBolt" type="Node2D"]
+script = ExtResource("1_hqhgm")
+lightning_target_amount = 20
+lightning_spread_damage = 100.0
+
+[node name="InitialLightningStrike" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="InitialLightningStrikeCollision" type="CollisionShape2D" parent="InitialLightningStrike"]
+shape = SubResource("CircleShape2D_hqhgm")
+disabled = true
+
+[node name="LightningStrikeSpread" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="LightningStrikeSpreadCollision" type="CollisionShape2D" parent="LightningStrikeSpread"]
+shape = SubResource("CircleShape2D_l0k6y")
+disabled = true
+
+[node name="LightningBoltSound" type="Node2D" parent="."]
+script = ExtResource("2_l0k6y")
+event_path = "SFX/Spells/LightningBolt"
+
+[node name="LightningVFX" parent="." instance=ExtResource("3_ajakw")]
+
+[connection signal="body_entered" from="InitialLightningStrike" to="." method="_on_initial_lightning_strike_body_entered"]

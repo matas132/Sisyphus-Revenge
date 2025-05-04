@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=3 format=3 uid="uid://blneiwhga5ruy"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_hsk12"]
+[ext_resource type="AudioStream" uid="uid://cj3jgt3xldyd3" path="res://assets/audio/SoundEffects/spells/lightning_bolt.ogg" id="2_rwxje"]
+
+[resource]
+script = ExtResource("1_hsk12")
+stream = Array[AudioStream]([ExtResource("2_rwxje")])
+pool_behavior = 0
+priority = 0
+volume = 2.0
+volume_variation = 0.0
+volume_mod_mixing = 1
+bus = 2
+enter_time = 0.0
+leave_time = 0.2
+pitch = 0.0
+pitch_variation = 7.07
+pitch_mod_mixing = 0
+attenuation = 0.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"

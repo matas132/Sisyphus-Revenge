@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=5 format=3 uid="uid://ctn8ww6ogdert"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_d3sk4"]
+[ext_resource type="AudioStream" uid="uid://dinhwadtecuwu" path="res://assets/audio/SoundEffects/unit/attack_swing_01.ogg" id="2_lhteo"]
+[ext_resource type="AudioStream" uid="uid://t7wegffhlx12" path="res://assets/audio/SoundEffects/unit/attack_swing_02.ogg" id="3_l38py"]
+[ext_resource type="AudioStream" uid="uid://dn71lkgsdwijw" path="res://assets/audio/SoundEffects/unit/attack_swing_03.ogg" id="4_6l2y8"]
+
+[resource]
+script = ExtResource("1_d3sk4")
+stream = Array[AudioStream]([ExtResource("2_lhteo"), ExtResource("3_l38py"), ExtResource("4_6l2y8")])
+pool_behavior = 0
+priority = 3
+volume = 0.38
+volume_variation = 0.087
+volume_mod_mixing = 1
+bus = 3
+enter_time = 0.0
+leave_time = 0.2
+pitch = -19.09
+pitch_variation = 3.82
+pitch_mod_mixing = 0
+attenuation = 0.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"

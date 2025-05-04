@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://0drlia72pv6m"]
+
+[ext_resource type="Script" uid="uid://dxw8wpqc4f0u0" path="res://entities/game_entities/enemy/Units/Archer/greek_archer.gd" id="1_tdahg"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_fdkqc"]
+[ext_resource type="PackedScene" uid="uid://jlg2pa040rfb" path="res://entities/game_entities/Spells_&_Projectiles/MagicProjectile.tscn" id="2_qaek4"]
+[ext_resource type="Texture2D" uid="uid://ci0etnu6ms4eb" path="res://assets/Entities/Enemy units/GameJam-ControlledChaos-Unit-Enemy-Toxotes.png" id="3_m22x5"]
+[ext_resource type="PackedScene" uid="uid://021ex06mgjqa" path="res://entities/game_entities/visuals/archer_b.tscn" id="5_qaek4"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="6_p0qid"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdkqc"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m22x5"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qaek4"]
+radius = 65.0
+
+[node name="GreekArcher" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_tdahg")
+projectile_scene = ExtResource("2_qaek4")
+ranged_damage = 20.0
+damage_rate = 1.0
+default_speed = 60.0
+max_health = 50.0
+metadata/_custom_type_script = "uid://cbpc3kew7qksm"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_m22x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fdkqc")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_m22x5")
+debug_color = Color(0, 0.6, 0.701961, 0.0784314)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_qaek4")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_fdkqc")]
+
+[node name="DamageRate" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite" parent="." instance=ExtResource("5_qaek4")]
+position = Vector2(-6.66667, 28.3333)
+
+[node name="AttackSound" type="Node2D" parent="."]
+script = ExtResource("6_p0qid")
+event_path = "SFX/Unit/AttackBowShoot"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]

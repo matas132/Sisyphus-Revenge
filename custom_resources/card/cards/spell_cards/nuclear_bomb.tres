@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellCard" load_steps=4 format=3 uid="uid://buie0olabm8aw"]
+
+[ext_resource type="Texture2D" uid="uid://c8os68cjcct13" path="res://assets/Entities/cards/card_desc/Solar Flare Helios Description.png" id="1_3psm1"]
+[ext_resource type="Script" uid="uid://ke1opamcs7yi" path="res://custom_resources/card/spawning_card/spell_card/spell_card.gd" id="1_i7u18"]
+[ext_resource type="Texture2D" uid="uid://b0vx2wyt1r4qf" path="res://assets/Entities/cards/spell/Solar Flare Helios card.png" id="1_vbiak"]
+
+[resource]
+script = ExtResource("1_i7u18")
+instant_use = false
+entity_file_path = "uid://dv7ad70440bv0"
+title = ""
+image = ExtResource("1_vbiak")
+description = ""
+sound_path = ""
+desc_image = ExtResource("1_3psm1")
+metadata/_custom_type_script = "uid://ke1opamcs7yi"

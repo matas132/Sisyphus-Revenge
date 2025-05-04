@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AudioMSoundComposition" load_steps=5 format=3 uid="uid://djeylwo3wjypl"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_tdkcj"]
+[ext_resource type="Resource" uid="uid://c1nyayyabaxdf" path="res://assets/audio/SoundEffects/ambience/wind_and_thunder.tres" id="2_258gy"]
+[ext_resource type="Script" uid="uid://cqjmyf666ola0" path="res://addons/audiom/classes/sound_parameter.gd" id="3_872a3"]
+[ext_resource type="Script" uid="uid://6riv127out4" path="res://addons/audiom/classes/sound_composition.gd" id="4_om6ib"]
+
+[resource]
+script = ExtResource("4_om6ib")
+layers = Array[ExtResource("1_tdkcj")]([ExtResource("2_258gy")])
+volume = 0.55
+volume_mod_mixing = 1
+pitch = 0.0
+pitch_mod_mixing = 0
+repeat = false
+repeat_interval = 1.0
+interrupt_voices_on_stop = false
+override_enter_time = false
+enter_time = 2.0
+override_leave_time = false
+leave_time = 5.0
+parameters = Array[ExtResource("3_872a3")]([])
+affect_active_voices = true
+metadata/_custom_type_script = "uid://6riv127out4"

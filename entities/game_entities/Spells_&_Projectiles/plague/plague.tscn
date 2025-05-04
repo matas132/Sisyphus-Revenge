@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://ot60qikb4fd3"]
+
+[ext_resource type="Script" uid="uid://cr5w52md78487" path="res://entities/game_entities/Spells_&_Projectiles/plague/plague.gd" id="1_vujvn"]
+[ext_resource type="Script" path="res://addons/audiom/classes/event_instance_2d.gd" id="2_fc7rx"]
+[ext_resource type="PackedScene" uid="uid://ckscfo8rpk2o8" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/extra/plague/plague.tscn" id="3_cxihv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p34s5"]
+radius = 232.034
+
+[sub_resource type="Gradient" id="Gradient_uo4l2"]
+offsets = PackedFloat32Array(0, 0.113695, 0.524064, 0.894057, 1)
+colors = PackedColorArray(6.01634e-09, 0.26907, 2.40654e-07, 1, 0, 0.213257, 4.81308e-08, 0.819246, 4.54234e-07, 0.230417, 2.40654e-08, 0.806202, 1.38376e-07, 0.107433, 1.8049e-08, 0.381429, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fc7rx"]
+gradient = SubResource("Gradient_uo4l2")
+width = 800
+height = 800
+fill = 1
+fill_from = Vector2(0.495726, 0.487179)
+fill_to = Vector2(0.799145, 0.769231)
+
+[node name="Plague" type="Node2D"]
+script = ExtResource("1_vujvn")
+
+[node name="EffectedRange" type="Area2D" parent="."]
+
+[node name="EffectedRangeCollision" type="CollisionShape2D" parent="EffectedRange"]
+shape = SubResource("CircleShape2D_p34s5")
+debug_color = Color(0, 0.6, 0.384314, 0.419608)
+
+[node name="EmpowerEnd" type="Timer" parent="."]
+
+[node name="PlagueSFX" type="Node2D" parent="."]
+script = ExtResource("2_fc7rx")
+event_path = "SFX/Spells/Plague"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.341176)
+z_index = -1
+scale = Vector2(0.638761, 0.639999)
+texture = SubResource("GradientTexture2D_fc7rx")
+
+[node name="plague" parent="." instance=ExtResource("3_cxihv")]
+z_index = 1
+scale = Vector2(2.5, 2.5)
+
+[connection signal="body_entered" from="EffectedRange" to="." method="_on_effected_range_body_entered"]
+[connection signal="body_exited" from="EffectedRange" to="." method="_on_effected_range_body_exited"]
+[connection signal="timeout" from="EmpowerEnd" to="." method="_on_empower_end_timeout"]

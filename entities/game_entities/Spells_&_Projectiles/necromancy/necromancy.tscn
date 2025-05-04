@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://drbhdi1uw86jb"]
+
+[ext_resource type="Script" uid="uid://cgfakmmck6kh8" path="res://entities/game_entities/Spells_&_Projectiles/necromancy/necromancy.gd" id="1_5i6wl"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="2_v0prm"]
+[ext_resource type="PackedScene" uid="uid://cint15nkwdcuf" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/extra/necromancy/necromancy.tscn" id="3_0mlws"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5i6wl"]
+size = Vector2(200, 200)
+
+[node name="Necromancy" type="Node2D"]
+script = ExtResource("1_5i6wl")
+summon_cooldown = 1.4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.180392)
+texture = SubResource("PlaceholderTexture2D_5i6wl")
+
+[node name="Duration" type="Timer" parent="."]
+
+[node name="NecromancySFX" type="Node2D" parent="."]
+script = ExtResource("2_v0prm")
+event_path = "SFX/Spells/Necromancy"
+
+[node name="Node2D" parent="." instance=ExtResource("3_0mlws")]
+z_index = 1
+
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]

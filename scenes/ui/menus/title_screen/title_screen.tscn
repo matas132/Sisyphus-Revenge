@@ -1,0 +1,189 @@
+[gd_scene load_steps=10 format=3 uid="uid://4twbdn06w2a8"]
+
+[ext_resource type="Script" uid="uid://dndwlbofuop0k" path="res://scenes/ui/menus/buttons/button_with_sound.gd" id="1_5dcr4"]
+[ext_resource type="Texture2D" uid="uid://bkf4v3bg2bvgb" path="res://assets/background/Main menu v2.png" id="1_t1jja"]
+[ext_resource type="Script" uid="uid://kft8ey2chi7x" path="res://scenes/ui/menus/title_screen/credits.gd" id="2_dgm8h"]
+[ext_resource type="Script" path="res://scenes/ui/menus/title_screen/exit_button.gd" id="2_nkcds"]
+[ext_resource type="FontFile" uid="uid://nah606yjdt2k" path="res://assets/font/AntroposFreefont-BW2G.ttf" id="4_cbrrw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1jja"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q858s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vkyv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlu7a"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2560.0
+offset_bottom = 1440.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_t1jja")
+
+[node name="StartGame" type="Button" parent="."]
+layout_mode = 2
+offset_left = 278.0
+offset_top = 493.0
+offset_right = 887.0
+offset_bottom = 618.0
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_t1jja")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t1jja")
+script = ExtResource("1_5dcr4")
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 2
+offset_left = 867.0
+offset_top = 702.0
+offset_right = 1144.0
+offset_bottom = 767.0
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_q858s")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q858s")
+script = ExtResource("1_5dcr4")
+
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1478.0
+offset_top = 571.0
+offset_right = 1722.0
+offset_bottom = 632.0
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_6vkyv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6vkyv")
+script = ExtResource("2_dgm8h")
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1274.0
+offset_top = 719.0
+offset_right = 1445.0
+offset_bottom = 791.0
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_mlu7a")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mlu7a")
+script = ExtResource("1_5dcr4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="ExitButton" type="Button" parent="Credits"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 867.0
+offset_right = 544.0
+offset_bottom = 958.0
+theme_override_font_sizes/font_size = 60
+text = "Exit credits"
+script = ExtResource("2_nkcds")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 63.0
+offset_right = 1867.0
+offset_bottom = 1022.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_cbrrw")
+theme_override_font_sizes/normal_font_size = 40
+text = "Creative director - Jim Milton
+
+Lead programmer - Outisim
+
+Units programmer - Yamimao
+
+Character design and sprite artist - TripleA096
+
+UI and cutscenes artist - Dyana
+
+Background, animations, and VFX artist - Loewenmaul
+
+Writer  - Moonshews
+
+Music and sound design - Wobbleblast, Megabrain
+
+Athena Voice Actor - Katie Otten"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="CreditsButton" to="CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="Credits/ExitButton" to="Credits/ExitButton" method="_on_pressed"]

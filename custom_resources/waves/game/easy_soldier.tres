@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=4 format=3 uid="uid://bd5i1cyy304wo"]
+
+[ext_resource type="Script" uid="uid://51par2err3tp" path="res://custom_resources/enemy_spawning/enemy_spawn.gd" id="1_lnbnm"]
+[ext_resource type="Script" uid="uid://bjapcpirpxe82" path="res://custom_resources/enemy_spawning/wave.gd" id="2_fh6nn"]
+
+[sub_resource type="Resource" id="Resource_u7ar4"]
+script = ExtResource("1_lnbnm")
+enemy = 0
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[resource]
+script = ExtResource("2_fh6nn")
+wave_length = 15.0
+enemy_spawn_frequency = 3.0
+enemies = Array[ExtResource("1_lnbnm")]([SubResource("Resource_u7ar4")])
+metadata/_custom_type_script = "uid://bjapcpirpxe82"

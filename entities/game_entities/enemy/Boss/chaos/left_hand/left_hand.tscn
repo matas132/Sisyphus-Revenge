@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba8xcnmakuan2"]
+
+[ext_resource type="Script" uid="uid://de5nsjys1pshx" path="res://entities/game_entities/enemy/Boss/chaos/left_hand/left_hand.gd" id="1_61j28"]
+[ext_resource type="PackedScene" uid="uid://dauuytluuuoql" path="res://entities/game_entities/visuals/Chaos/chaos_hand_left_graphics.tscn" id="3_lhgkt"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="3_o4qkn"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="4_fgxy6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4d1y"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4qkn"]
+radius = 320.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgxy6"]
+radius = 160.0
+
+[node name="LeftHand" type="CharacterBody2D"]
+script = ExtResource("1_61j28")
+damage = 300.0
+max_health = 2000.0
+health = 2000.0
+metadata/_custom_type_script = "uid://crqan3j48afjr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o4d1y")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_o4qkn")
+debug_color = Color(0, 0.6, 0.701961, 0.180392)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_fgxy6")
+debug_color = Color(0, 0.6, 0.701961, 0.145098)
+
+[node name="HealthBar" parent="." instance=ExtResource("3_o4qkn")]
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[node name="Sprite" parent="." instance=ExtResource("3_lhgkt")]
+position = Vector2(0, 18)
+
+[node name="SwingSound" type="Node2D" parent="."]
+script = ExtResource("4_fgxy6")
+event_path = "SFX/Unit/ChaosSwing"
+metadata/_custom_type_script = "uid://k536wrjv8lmy"
+
+[node name="HitSound" type="Node2D" parent="."]
+script = ExtResource("4_fgxy6")
+event_path = "SFX/Unit/AttackHitBluntHeavy"
+metadata/_custom_type_script = "uid://k536wrjv8lmy"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]

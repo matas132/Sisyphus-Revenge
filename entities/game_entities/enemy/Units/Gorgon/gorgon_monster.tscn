@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnajwtu1qcjfg"]
+
+[ext_resource type="Script" uid="uid://cxj11vjmlppt1" path="res://entities/game_entities/enemy/Units/Gorgon/gorgon_monster.gd" id="1_1v7dt"]
+[ext_resource type="Texture2D" uid="uid://ccyk4yok182of" path="res://assets/Entities/Enemy units/GameJam-ControlledChaos-Unit-Monster-Gorgon.png" id="2_oc018"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_wlhjr"]
+[ext_resource type="PackedScene" uid="uid://cd67p61tjfdoh" path="res://entities/game_entities/visuals/Gorgon/gorgon_graphics.tscn" id="4_oc018"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="5_0t2da"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wlhjr"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oc018"]
+radius = 180.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0t2da"]
+radius = 80.0
+
+[node name="GorgonMonster" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_1v7dt")
+damage_rate = 1.0
+damage = 40.0
+default_speed = 50.0
+animation_attack_delay = 0.3
+max_health = 150.0
+metadata/_custom_type_script = "uid://cbpc3kew7qksm"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -6.66667)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_oc018")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wlhjr")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_oc018")
+debug_color = Color(0, 0.6, 0.701961, 0.0392157)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_0t2da")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_wlhjr")]
+mouse_filter = 0
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[node name="Sprite" parent="." instance=ExtResource("4_oc018")]
+position = Vector2(-3.33333, 20)
+
+[node name="AttackSprite" type="Node2D" parent="."]
+script = ExtResource("5_0t2da")
+event_path = "SFX/Unit/AttackHiss"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]

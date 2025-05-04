@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdwh4v1sm8fy5"]
+
+[ext_resource type="FontFile" uid="uid://nah606yjdt2k" path="res://assets/font/AntroposFreefont-BW2G.ttf" id="1_4pya1"]
+[ext_resource type="Script" uid="uid://bobcfiw80xodc" path="res://scenes/ui/gameplay/vfx/vfx_text_label.gd" id="1_quj46"]
+
+[node name="VFXText" type="Node2D"]
+script = ExtResource("1_quj46")
+
+[node name="VFXTextLabel" type="Label" parent="."]
+offset_left = -52.0
+offset_top = -55.0
+offset_right = 78.0
+pivot_offset = Vector2(51.5, 55)
+theme_override_colors/font_color = Color(0.78538, 0.651544, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("1_4pya1")
+theme_override_font_sizes/font_size = 40
+text = "9000"

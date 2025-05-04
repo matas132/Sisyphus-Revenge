@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellCard" load_steps=4 format=3 uid="uid://dqqsa8t3i666m"]
+
+[ext_resource type="Script" uid="uid://ke1opamcs7yi" path="res://custom_resources/card/spawning_card/spell_card/spell_card.gd" id="1_jj8q6"]
+[ext_resource type="Texture2D" uid="uid://bxgreu3mrhf0a" path="res://assets/Entities/cards/spell/Darkness Nyx card.png" id="1_pblew"]
+[ext_resource type="Texture2D" uid="uid://d1wdybe2y4hkv" path="res://assets/Entities/cards/card_desc/Darkness Nyx Description.png" id="1_pxqpq"]
+
+[resource]
+script = ExtResource("1_jj8q6")
+instant_use = false
+entity_file_path = "uid://bhsquxs7uph5p"
+title = ""
+image = ExtResource("1_pblew")
+description = ""
+sound_path = ""
+desc_image = ExtResource("1_pxqpq")
+metadata/_custom_type_script = "uid://ke1opamcs7yi"

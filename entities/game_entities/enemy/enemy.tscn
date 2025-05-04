@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgtdh1y6ljjcu"]
+
+[ext_resource type="Script" uid="uid://cbpc3kew7qksm" path="res://entities/game_entities/enemy/enemy.gd" id="1_ksmh7"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_fcx1k"]
+[ext_resource type="PackedScene" uid="uid://bkfodu1377ayu" path="res://entities/game_entities/visuals/hoplite/hoplite_b_graphics.tscn" id="3_s51qh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tir2s"]
+size = Vector2(70, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tir2s"]
+radius = 32.249
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35u10"]
+radius = 247.018
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fcx1k"]
+radius = 50.0
+
+[node name="Enemy" type="CharacterBody2D"]
+y_sort_enabled = true
+scale = Vector2(0.6, 0.6)
+collision_layer = 3
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_ksmh7")
+default_speed = 70.0
+max_health = 100.0
+
+[node name="SpriteA" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_tir2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tir2s")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_35u10")
+debug_color = Color(0, 0.6, 0.701961, 0.0588235)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_fcx1k")
+debug_color = Color(0.7, 0, 0.0116665, 0.419608)
+
+[node name="HealthBar" parent="." instance=ExtResource("2_fcx1k")]
+offset_left = -33.0
+offset_top = 51.0
+offset_right = 35.0
+offset_bottom = 60.0
+metadata/_edit_use_anchors_ = true
+
+[node name="DamageRate" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Sprite" parent="." instance=ExtResource("3_s51qh")]
+visible = false
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]

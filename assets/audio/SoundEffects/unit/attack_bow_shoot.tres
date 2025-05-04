@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=5 format=3 uid="uid://d0wwebo8t2myr"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_oswoj"]
+[ext_resource type="AudioStream" uid="uid://dv3gnhuaokik7" path="res://assets/audio/SoundEffects/unit/attack_bow_shoot_01.ogg" id="2_3tok5"]
+[ext_resource type="AudioStream" uid="uid://c70v0fwymxycr" path="res://assets/audio/SoundEffects/unit/attack_bow_shoot_02.ogg" id="3_tfs7f"]
+[ext_resource type="AudioStream" uid="uid://b8fpsytqtrt8r" path="res://assets/audio/SoundEffects/unit/attack_bow_shoot_03.ogg" id="4_03po4"]
+
+[resource]
+script = ExtResource("1_oswoj")
+stream = Array[AudioStream]([ExtResource("2_3tok5"), ExtResource("3_tfs7f"), ExtResource("4_03po4")])
+pool_behavior = 0
+priority = 0
+volume = 0.36
+volume_variation = 0.087
+volume_mod_mixing = 1
+bus = 3
+enter_time = 0.0
+leave_time = 0.2
+pitch = 0.0
+pitch_variation = 3.4
+pitch_mod_mixing = 0
+attenuation = 0.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"

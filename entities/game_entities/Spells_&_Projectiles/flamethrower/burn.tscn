@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://c688ln8vh8xtc"]
+
+[ext_resource type="Script" uid="uid://x4gbx83fypm2" path="res://entities/game_entities/Spells_&_Projectiles/flamethrower/burn.gd" id="1_dkw21"]
+[ext_resource type="PackedScene" uid="uid://caof1flbxr3sv" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/flamethrower/flame.tscn" id="2_nt5av"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5sge4"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sev1i"]
+radius = 61.6604
+
+[node name="Burn" type="Node2D"]
+position = Vector2(-240, -159)
+script = ExtResource("1_dkw21")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.395328, 0.708198, 0.147164, 1)
+texture = SubResource("PlaceholderTexture2D_5sge4")
+
+[node name="SpreadArea" type="Area2D" parent="."]
+
+[node name="SpreadAreaCollision" type="CollisionShape2D" parent="SpreadArea"]
+shape = SubResource("CircleShape2D_sev1i")
+debug_color = Color(0.78175, 0.435474, 0.026181, 0.42)
+
+[node name="Duration" type="Timer" parent="."]
+
+[node name="BurnTick" type="Timer" parent="."]
+
+[node name="flame4" parent="." instance=ExtResource("2_nt5av")]
+position = Vector2(-18, 20)
+scale = Vector2(0.226836, 0.226836)
+
+[node name="flame" parent="." instance=ExtResource("2_nt5av")]
+position = Vector2(29, -22)
+scale = Vector2(0.226836, 0.226836)
+
+[node name="flame2" parent="." instance=ExtResource("2_nt5av")]
+position = Vector2(-40, -8)
+scale = Vector2(0.226836, 0.226836)
+
+[node name="flame3" parent="." instance=ExtResource("2_nt5av")]
+position = Vector2(18, 38)
+scale = Vector2(0.226836, 0.226836)
+
+[connection signal="body_entered" from="SpreadArea" to="." method="_on_spread_area_body_entered"]
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]
+[connection signal="timeout" from="BurnTick" to="." method="_on_burn_tick_timeout"]

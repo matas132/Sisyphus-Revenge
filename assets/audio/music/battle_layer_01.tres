@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=3 format=3 uid="uid://dnfdm5t4ei32d"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_ow7tw"]
+[ext_resource type="AudioStream" uid="uid://bygxhh6e7t6ho" path="res://assets/audio/music/battle.ogg" id="2_r52vp"]
+
+[resource]
+script = ExtResource("1_ow7tw")
+stream = Array[AudioStream]([ExtResource("2_r52vp")])
+pool_behavior = 0
+priority = 3
+volume = 1.0
+volume_variation = 0.0
+volume_mod_mixing = 1
+bus = 4
+enter_time = 0.0
+leave_time = 5.0
+pitch = 0.0
+pitch_variation = 0.0
+pitch_mod_mixing = 0
+attenuation = 1.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"

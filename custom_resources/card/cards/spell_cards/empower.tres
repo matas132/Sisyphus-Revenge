@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellCard" load_steps=4 format=3 uid="uid://d1578qw32ubbp"]
+
+[ext_resource type="Script" uid="uid://ke1opamcs7yi" path="res://custom_resources/card/spawning_card/spell_card/spell_card.gd" id="1_d4orm"]
+[ext_resource type="Texture2D" uid="uid://ti7ik11t5a7n" path="res://assets/Entities/cards/card_desc/Empower Aphrodite Descriptio.png" id="1_lk4yh"]
+[ext_resource type="Texture2D" uid="uid://dxnmkbnlv7vdw" path="res://assets/Entities/cards/spell/Empower Aphrodite card.png" id="1_p8ugh"]
+
+[resource]
+script = ExtResource("1_d4orm")
+instant_use = false
+entity_file_path = "uid://65a81icuetpm"
+title = ""
+image = ExtResource("1_p8ugh")
+description = ""
+sound_path = ""
+desc_image = ExtResource("1_lk4yh")
+metadata/_custom_type_script = "uid://ke1opamcs7yi"

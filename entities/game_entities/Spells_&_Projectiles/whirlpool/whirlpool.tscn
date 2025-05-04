@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2s3movbktfhd"]
+
+[ext_resource type="Script" uid="uid://cbcsjao2pp1ov" path="res://entities/game_entities/Spells_&_Projectiles/whirlpool/whirlpool.gd" id="1_ys6uy"]
+[ext_resource type="PackedScene" uid="uid://b50pg562ypan7" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/pool/pool.tscn" id="2_vfxfd"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="3_al7xh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vfxfd"]
+radius = 213.005
+
+[node name="Whirlpool" type="Node2D"]
+script = ExtResource("1_ys6uy")
+damage = 175.0
+duration = 5.0
+
+[node name="WhirlpoolArea" type="Area2D" parent="."]
+
+[node name="WhirlpoolAreaCollision" type="CollisionShape2D" parent="WhirlpoolArea"]
+position = Vector2(0, 5.5)
+shape = SubResource("CircleShape2D_vfxfd")
+disabled = true
+
+[node name="DurTimer" type="Timer" parent="."]
+
+[node name="UpdateTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="PoolVFX" parent="." instance=ExtResource("2_vfxfd")]
+z_index = -1
+scale = Vector2(1.56, 1.56)
+
+[node name="PoolSFX" type="Node2D" parent="."]
+script = ExtResource("3_al7xh")
+event_path = "SFX/Spells/Whirlpool"
+
+[connection signal="timeout" from="DurTimer" to="." method="_on_dur_timer_timeout"]
+[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpawningCard" load_steps=4 format=3 uid="uid://xw8ge7yl5nem"]
+
+[ext_resource type="Script" uid="uid://yg3ci5nyaj1c" path="res://custom_resources/card/spawning_card/spawning_card.gd" id="2_t4rnx"]
+
+[sub_resource type="Gradient" id="Gradient_gimnf"]
+colors = PackedColorArray(0, 0, 0, 1, 0.248407, 0, 0.00755937, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2i3s0"]
+gradient = SubResource("Gradient_gimnf")
+fill_from = Vector2(0.559829, 1)
+fill_to = Vector2(0.564103, 0.487179)
+
+[resource]
+script = ExtResource("2_t4rnx")
+entity_file_path = "uid://ds416j58errjs"
+title = "Hoplite"
+image = SubResource("GradientTexture2D_2i3s0")
+metadata/_custom_type_script = "uid://yg3ci5nyaj1c"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=5 format=3 uid="uid://bvwbl4jn3epcm"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_gh5bw"]
+[ext_resource type="AudioStream" uid="uid://bklo5l48oj3rl" path="res://assets/audio/SoundEffects/ui/card_hover_01.ogg" id="2_dj5vw"]
+[ext_resource type="AudioStream" uid="uid://b6dldeh12oj0f" path="res://assets/audio/SoundEffects/ui/card_hover_02.ogg" id="3_ao23t"]
+[ext_resource type="AudioStream" uid="uid://c8abjgglckl77" path="res://assets/audio/SoundEffects/ui/card_hover_03.ogg" id="4_hu0f0"]
+
+[resource]
+script = ExtResource("1_gh5bw")
+stream = Array[AudioStream]([ExtResource("2_dj5vw"), ExtResource("3_ao23t"), ExtResource("4_hu0f0")])
+pool_behavior = 0
+priority = 0
+volume = 0.18
+volume_variation = 0.102
+volume_mod_mixing = 1
+bus = 3
+enter_time = 0.0
+leave_time = 0.2
+pitch = 0.0
+pitch_variation = 1.0
+pitch_mod_mixing = 0
+attenuation = 1.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"

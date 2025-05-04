@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5n5myxfo5m82"]
+
+[ext_resource type="Script" uid="uid://c6x10x7k68hm8" path="res://entities/game_entities/Spells_&_Projectiles/flamethrower/flame.gd" id="1_5sge4"]
+[ext_resource type="PackedScene" uid="uid://caof1flbxr3sv" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/flamethrower/flame.tscn" id="2_ulhcb"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="3_eeoyq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sev1i"]
+radius = 40.0125
+
+[node name="Flame" type="Node2D"]
+position = Vector2(-74, -99)
+script = ExtResource("1_5sge4")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="DamageAreaCollision" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_sev1i")
+
+[node name="FlameVFX" parent="." instance=ExtResource("2_ulhcb")]
+position = Vector2(0, 19)
+scale = Vector2(0.362049, 0.362049)
+
+[node name="FlameSFX" type="Node2D" parent="."]
+script = ExtResource("3_eeoyq")
+event_path = "SFX/Spells/Flamethrower"
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

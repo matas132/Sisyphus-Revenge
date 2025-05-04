@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3bcdujiw3wkb"]
+
+[ext_resource type="Script" uid="uid://5lepuaf0nas8" path="res://entities/game_entities/enemy/Units/chimera/chimera.gd" id="1_655jj"]
+[ext_resource type="Texture2D" uid="uid://dwt1f7k5c8sl8" path="res://assets/Entities/Enemy units/GameJam-ControlledChaos-Unit-Monster-Chimera.png" id="2_655jj"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="3_o6hko"]
+[ext_resource type="PackedScene" uid="uid://cugx7dlgoalnx" path="res://entities/game_entities/visuals/chimera.tscn" id="4_et7ow"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="5_0rfow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5l07j"]
+radius = 55.0252
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_04hya"]
+radius = 206.694
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pqkcd"]
+radius = 106.68
+
+[node name="CyclopsMonster" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_655jj")
+damage_rate = 0.75
+damage = 30.0
+animation_attack_delay = 0.2
+max_health = 150.0
+metadata/_custom_type_script = "uid://cbpc3kew7qksm"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -16.6667)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("2_655jj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.66667)
+shape = SubResource("CircleShape2D_5l07j")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_04hya")
+debug_color = Color(0, 0.6, 0.701961, 0.0666667)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_pqkcd")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_o6hko")]
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[node name="Sprite" parent="." instance=ExtResource("4_et7ow")]
+position = Vector2(5, 21.6667)
+scale = Vector2(1.26667, 1.26667)
+
+[node name="AttackSound" type="Node2D" parent="."]
+script = ExtResource("5_0rfow")
+event_path = "SFX/Unit/AttackHitPierce"
+
+[node name="SwingSound" type="Node2D" parent="."]
+script = ExtResource("5_0rfow")
+event_path = "SFX/Unit/AttackSwing"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]

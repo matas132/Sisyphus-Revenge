@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://ds416j58errjs"]
+
+[ext_resource type="Script" uid="uid://5lyabt5xavge" path="res://entities/game_entities/player_unit/player_unit.gd" id="1_owhda"]
+[ext_resource type="Texture2D" uid="uid://cjw1yc4r0i5xq" path="res://assets/Entities/player units cards/warrior.png" id="2_5k65f"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_sdsop"]
+[ext_resource type="PackedScene" uid="uid://cgmdj4jwuu53q" path="res://entities/game_entities/visuals/hoplite/hoplite_graphics.tscn" id="4_4klu0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owhda"]
+radius = 46.0977
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sdsop"]
+radius = 180.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5k65f"]
+radius = 70.0
+
+[node name="PlayerUnit" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+collision_layer = 3
+motion_mode = 1
+script = ExtResource("1_owhda")
+max_health = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("2_5k65f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_owhda")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_sdsop")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_5k65f")
+debug_color = Color(0.7, 0, 0.0116665, 0.419608)
+
+[node name="HealthBar" parent="." instance=ExtResource("2_sdsop")]
+offset_left = -47.0
+offset_top = 67.0
+offset_right = 45.0
+offset_bottom = 84.0
+
+[node name="DamageRate" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ReactTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite" parent="." instance=ExtResource("4_4klu0")]
+position = Vector2(0, 18.3333)
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]
+[connection signal="timeout" from="ReactTimer" to="." method="_on_react_timeout"]

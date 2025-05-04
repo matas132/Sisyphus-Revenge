@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5c161q17fvnw"]
+
+[ext_resource type="Script" uid="uid://dmmajyjyg2jvx" path="res://entities/game_entities/Spells_&_Projectiles/blade_storm/blade_storm.gd" id="1_bteql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yniru"]
+size = Vector2(2120, 1224)
+
+[node name="BladeStorm" type="Node2D"]
+script = ExtResource("1_bteql")
+
+[node name="BladeStormArea" type="Area2D" parent="."]
+
+[node name="BladeStormDamageCollision" type="CollisionShape2D" parent="BladeStormArea"]
+position = Vector2(946, 526)
+shape = SubResource("RectangleShape2D_yniru")
+disabled = true

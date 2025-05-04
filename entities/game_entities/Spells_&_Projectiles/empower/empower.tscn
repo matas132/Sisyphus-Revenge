@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://65a81icuetpm"]
+
+[ext_resource type="Script" uid="uid://drr62rx747luu" path="res://entities/game_entities/Spells_&_Projectiles/empower/empower.gd" id="1_uo4l2"]
+[ext_resource type="Script" path="res://addons/audiom/classes/event_instance_2d.gd" id="2_c30n4"]
+[ext_resource type="PackedScene" uid="uid://b4ului3t8m2qe" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/extra/empower/empower.tscn" id="3_tjswo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p34s5"]
+radius = 285.212
+
+[sub_resource type="Gradient" id="Gradient_c30n4"]
+offsets = PackedFloat32Array(0, 0.113695, 0.51938, 0.894057, 1)
+colors = PackedColorArray(0, 0.756863, 0, 1, 0, 0.620057, 0, 0.819246, 0, 0.610184, 0, 0.806202, 0, 0.288689, 0, 0.381429, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c30n4"]
+gradient = SubResource("Gradient_c30n4")
+width = 800
+height = 800
+fill = 1
+fill_from = Vector2(0.495726, 0.487179)
+fill_to = Vector2(0.799145, 0.769231)
+
+[node name="Empower" type="Node2D"]
+script = ExtResource("1_uo4l2")
+duration = 10.0
+
+[node name="EffectedRange" type="Area2D" parent="."]
+
+[node name="EffectedRangeCollision" type="CollisionShape2D" parent="EffectedRange"]
+shape = SubResource("CircleShape2D_p34s5")
+debug_color = Color(0, 0.6, 0.384314, 0.419608)
+
+[node name="EmpowerEnd" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0862745)
+z_index = -1
+texture = SubResource("GradientTexture2D_c30n4")
+
+[node name="EmpowerSFX" type="Node2D" parent="."]
+script = ExtResource("2_c30n4")
+event_path = "SFX/Spells/Empower"
+
+[node name="EmpowerVFX" parent="." instance=ExtResource("3_tjswo")]
+z_index = 1
+
+[connection signal="body_entered" from="EffectedRange" to="." method="_on_effected_range_body_entered"]
+[connection signal="body_exited" from="EffectedRange" to="." method="_on_effected_range_body_exited"]
+[connection signal="timeout" from="EmpowerEnd" to="." method="_on_empower_end_timeout"]

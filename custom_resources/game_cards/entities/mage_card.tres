@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dahxrn3a70l2l"]
+
+[ext_resource type="Texture2D" uid="uid://dngtlxdik8rne" path="res://assets/Entities/cards/unit/Toxotes card.png" id="1_jlqpc"]
+[ext_resource type="Script" uid="uid://cx8va25drl6fw" path="res://custom_resources/card/spawning_card/spawn_card_extra/multiple_unit_spawning_card.gd" id="2_jlqpc"]
+
+[resource]
+script = ExtResource("2_jlqpc")
+unit_spawn_amount = 2
+entity_file_path = "uid://soh8gsn8rf0q"
+title = ""
+image = ExtResource("1_jlqpc")
+description = ""
+sound_path = "SFX/Spells/Summon"
+metadata/_custom_type_script = "uid://yg3ci5nyaj1c"

@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bukwtmn1s62gs"]
+
+[ext_resource type="Script" uid="uid://gse6y45vs61q" path="res://entities/game_entities/player_unit/Summoner/Minions/minion_unit.gd" id="1_q0ffc"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_qebrg"]
+[ext_resource type="Texture2D" uid="uid://c751o3hp0fblh" path="res://assets/Entities/player units cards/GameJam-ControlledChaos-Unit-Ally-Minion.png" id="2_uxybd"]
+[ext_resource type="PackedScene" uid="uid://ciufcrsht3vv8" path="res://entities/game_entities/visuals/minion_a_graphics.tscn" id="4_ljfsp"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="5_qam8e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q0ffc"]
+radius = 25.0555
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qebrg"]
+radius = 250.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uxybd"]
+radius = 70.0
+
+[node name="MinionUnit" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_q0ffc")
+damage_rate = 1.0
+speed = 33.0
+animation_attack_delay = 0.24
+max_health = 70.0
+metadata/_custom_type_script = "uid://5lyabt5xavge"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_uxybd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.6667)
+shape = SubResource("CircleShape2D_q0ffc")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_qebrg")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_uxybd")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_qebrg")]
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[node name="ReactTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite" parent="." instance=ExtResource("4_ljfsp")]
+position = Vector2(0, 23.3333)
+scale = Vector2(0.603662, 0.603662)
+
+[node name="SwingSound" type="Node2D" parent="."]
+script = ExtResource("5_qam8e")
+event_path = "SFX/Unit/AttackSwing"
+
+[node name="AttackSound" type="Node2D" parent="."]
+script = ExtResource("5_qam8e")
+event_path = "SFX/Unit/AttackHitBlunt"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]
+[connection signal="timeout" from="ReactTimer" to="." method="_on_react_timeout"]

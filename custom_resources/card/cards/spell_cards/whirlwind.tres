@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellCard" load_steps=4 format=3 uid="uid://b26d06yuu8wa3"]
+
+[ext_resource type="Texture2D" uid="uid://lvxj3q5t86ao" path="res://assets/Entities/cards/spell/Whirlwind Demeter card.png" id="1_0tikv"]
+[ext_resource type="Texture2D" uid="uid://g0ylpg0f4vfl" path="res://assets/Entities/cards/card_desc/Whirlwind Demeter Description.png" id="1_kl377"]
+[ext_resource type="Script" uid="uid://ke1opamcs7yi" path="res://custom_resources/card/spawning_card/spell_card/spell_card.gd" id="1_usg0v"]
+
+[resource]
+script = ExtResource("1_usg0v")
+instant_use = false
+entity_file_path = "uid://r5dskykrnw10"
+title = ""
+image = ExtResource("1_0tikv")
+description = ""
+sound_path = ""
+desc_image = ExtResource("1_kl377")
+metadata/_custom_type_script = "uid://ke1opamcs7yi"

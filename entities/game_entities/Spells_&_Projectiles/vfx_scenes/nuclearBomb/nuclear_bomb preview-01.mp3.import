@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csjci25cumsy7"
+path="res://.godot/imported/nuclear_bomb preview-01.mp3-b9001d89f2fda6c88eed951ba55a353a.mp3str"
+
+[deps]
+
+source_file="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/nuclearBomb/nuclear_bomb preview-01.mp3"
+dest_files=["res://.godot/imported/nuclear_bomb preview-01.mp3-b9001d89f2fda6c88eed951ba55a353a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

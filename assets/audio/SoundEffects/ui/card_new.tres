@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=3 format=3 uid="uid://w46auok3bwxw"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_2p0ne"]
+[ext_resource type="AudioStream" uid="uid://8dkrxlucgj1y" path="res://assets/audio/SoundEffects/ui/card_new.ogg" id="2_3i5oa"]
+
+[resource]
+script = ExtResource("1_2p0ne")
+stream = Array[AudioStream]([ExtResource("2_3i5oa")])
+pool_behavior = 0
+priority = 0
+volume = 0.2
+volume_variation = 0.106
+volume_mod_mixing = 1
+bus = 3
+enter_time = 0.0
+leave_time = 0.2
+pitch = 0.0
+pitch_variation = 3.82
+pitch_mod_mixing = 0
+attenuation = 1.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"

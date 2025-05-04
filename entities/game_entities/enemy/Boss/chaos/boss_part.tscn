@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckhmbm4wvdsoq"]
+
+[ext_resource type="Script" uid="uid://crqan3j48afjr" path="res://entities/game_entities/enemy/Boss/chaos/boss_part.gd" id="1_bqgu8"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_kknkl"]
+
+[node name="BossPart" type="CharacterBody2D"]
+script = ExtResource("1_bqgu8")
+metadata/_custom_type_script = "uid://cbpc3kew7qksm"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+
+[node name="HealthBar" parent="." instance=ExtResource("2_kknkl")]
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]

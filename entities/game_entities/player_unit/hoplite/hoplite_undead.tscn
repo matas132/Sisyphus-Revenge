@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxefw387xsu7l"]
+
+[ext_resource type="Script" uid="uid://byt3f3hng2dmd" path="res://entities/game_entities/player_unit/hoplite/hoplite_undead.gd" id="1_uv52w"]
+[ext_resource type="Texture2D" uid="uid://lw1gagkamgqi" path="res://assets/Entities/player units cards/GameJam-ControlledChaos-Unit-Ally-Hoplite.png" id="2_xjnvu"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="3_uv52w"]
+[ext_resource type="PackedScene" uid="uid://l87ikyjog8fx" path="res://entities/game_entities/visuals/hoplite/hoplite_undead.tscn" id="4_xjnvu"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="5_uv52w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8sfw"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_agjm4"]
+radius = 180.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jb05a"]
+radius = 65.0
+
+[node name="HopliteUndead" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_uv52w")
+max_health = 100.0
+health = 100.0
+metadata/_custom_type_script = "uid://5lyabt5xavge"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_xjnvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -51.6667)
+shape = SubResource("CircleShape2D_v8sfw")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(0, -48.3333)
+shape = SubResource("CircleShape2D_agjm4")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -50)
+shape = SubResource("CircleShape2D_jb05a")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_uv52w")]
+offset_top = -26.6667
+offset_bottom = -9.66667
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[node name="ReactTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite" parent="." instance=ExtResource("4_xjnvu")]
+scale = Vector2(0.669648, 0.669648)
+
+[node name="AttackSound" type="Node2D" parent="."]
+script = ExtResource("5_uv52w")
+event_path = "SFX/Unit/AttackHitBlunt"
+
+[node name="SwingSound" type="Node2D" parent="."]
+script = ExtResource("5_uv52w")
+event_path = "SFX/Unit/AttackSwing"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]
+[connection signal="timeout" from="ReactTimer" to="." method="_on_react_timeout"]

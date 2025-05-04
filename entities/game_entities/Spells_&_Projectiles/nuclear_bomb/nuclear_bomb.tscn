@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv7ad70440bv0"]
+
+[ext_resource type="Script" uid="uid://c1ny65885wmn3" path="res://entities/game_entities/Spells_&_Projectiles/nuclear_bomb/nuclear_bomb.gd" id="1_y1utp"]
+[ext_resource type="PackedScene" uid="uid://cabm71la0ojqc" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/nuclearBomb/nuclear_bomb.tscn" id="2_i5vay"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="3_0prnx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4fr0"]
+radius = 348.036
+
+[node name="NuclearBomb" type="Node2D"]
+script = ExtResource("1_y1utp")
+damage = 350.0
+
+[node name="DamageRange" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="DamageRangeCollision" type="CollisionShape2D" parent="DamageRange"]
+shape = SubResource("CircleShape2D_c4fr0")
+
+[node name="nukeVFX" parent="." instance=ExtResource("2_i5vay")]
+z_index = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="NukeSFX" type="Node2D" parent="."]
+script = ExtResource("3_0prnx")
+event_path = "SFX/Spells/NuclearBomb"

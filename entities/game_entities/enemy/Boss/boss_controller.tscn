@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://qokkhihsmqo3"]
+
+[ext_resource type="Script" uid="uid://bplopcslpq853" path="res://scenes/temp/boss_controller.gd" id="1_butcf"]
+[ext_resource type="PackedScene" uid="uid://bh6lwyyvwwhmh" path="res://entities/game_entities/enemy/Boss/chaos/head/head.tscn" id="2_k6rh8"]
+[ext_resource type="PackedScene" uid="uid://ba8xcnmakuan2" path="res://entities/game_entities/enemy/Boss/chaos/left_hand/left_hand.tscn" id="3_qvbmf"]
+[ext_resource type="PackedScene" uid="uid://c1r0iwxljhmah" path="res://entities/game_entities/enemy/Boss/chaos/right_hand/right_hand.tscn" id="4_v1y4h"]
+
+[node name="BossController" type="Node2D"]
+script = ExtResource("1_butcf")
+
+[node name="LeftArea" type="Area2D" parent="."]
+position = Vector2(-47, 930)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftArea"]
+position = Vector2(289.893, -194.902)
+scale = Vector2(0.59043, 0.734791)
+polygon = PackedVector2Array(-2, -3, -2, -566, 544, -566, 544, -3)
+
+[node name="RightArea" type="Area2D" parent="."]
+position = Vector2(-47, 930)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightArea"]
+position = Vector2(859.245, -177.69)
+scale = Vector2(0.559156, 0.763655)
+polygon = PackedVector2Array(1576, -3, 1576, -566, 1090, -566, 1090, -3)
+
+[node name="CenterArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CenterArea"]
+position = Vector2(0, 12.6969)
+scale = Vector2(1, 0.885613)
+polygon = PackedVector2Array(500, 800, 1485, 800, 1485, 360, 1183, 270, 740, 270, 500, 364)
+
+[node name="Head" parent="." instance=ExtResource("2_k6rh8")]
+position = Vector2(979, 605)
+base_cooldown = 2.0
+max_health = 6000.0
+health = 6000.0
+
+[node name="LeftHand" parent="." instance=ExtResource("3_qvbmf")]
+position = Vector2(359, 656)
+windup_time = 1.2
+base_cooldown = 1.5
+max_health = 1300.0
+health = 1300.0
+
+[node name="RightHand" parent="." instance=ExtResource("4_v1y4h")]
+position = Vector2(1613, 634)
+summons_per_attack = 8
+teleport_every = 3
+base_cooldown = 1.8
+max_health = 1300.0
+health = 1300.0

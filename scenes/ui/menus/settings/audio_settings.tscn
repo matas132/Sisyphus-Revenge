@@ -1,0 +1,228 @@
+[gd_scene load_steps=17 format=3 uid="uid://c03h6ygt7ddxy"]
+
+[ext_resource type="PackedScene" uid="uid://cyx8tciw21epa" path="res://scenes/ui/menus/settings/volume_slider.tscn" id="1_ppwww"]
+[ext_resource type="Texture2D" uid="uid://b8ynr2ypfdi2f" path="res://assets/ui/UI Volume settings v2.png" id="1_rfo34"]
+[ext_resource type="Script" uid="uid://dndwlbofuop0k" path="res://scenes/ui/menus/buttons/button_with_sound.gd" id="2_ytfyc"]
+[ext_resource type="Texture2D" uid="uid://ravfn7521pwo" path="res://assets/ui/Volume slider ball.png" id="3_rfo34"]
+[ext_resource type="Script" uid="uid://xrt3wnoemdth" path="res://scenes/ui/menus/settings/damage_number_button.gd" id="5_mthfv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfo34"]
+atlas = ExtResource("3_rfo34")
+region = Rect2(1508.95, 547.825, 60.1522, 60.3459)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mthfv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otd55"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rfo34"]
+
+[sub_resource type="Gradient" id="Gradient_lkr2i"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ioc7n"]
+gradient = SubResource("Gradient_lkr2i")
+width = 400
+height = 500
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1006d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avpda"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvmp4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otd55"]
+atlas = ExtResource("3_rfo34")
+region = Rect2(1459.37, 546.679, 113.039, 63.5051)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mthfv"]
+atlas = ExtResource("3_rfo34")
+region = Rect2(1505.67, 546.679, 105.431, 63.5051)
+
+[node name="AudioSettings" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Black" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.745098)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2560.0
+offset_bottom = 1440.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_rfo34")
+
+[node name="VolumeSlider" parent="." instance=ExtResource("1_ppwww")]
+layout_mode = 2
+offset_left = 743.0
+offset_top = 377.0
+offset_right = 1155.0
+offset_bottom = 437.0
+theme_override_icons/grabber = SubResource("AtlasTexture_rfo34")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_rfo34")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_mthfv")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_otd55")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_otd55")
+bus_name = "Master"
+
+[node name="VolumeSlider2" parent="." instance=ExtResource("1_ppwww")]
+layout_mode = 2
+offset_left = 743.0
+offset_top = 492.0
+offset_right = 1155.0
+offset_bottom = 552.0
+theme_override_icons/grabber = SubResource("AtlasTexture_rfo34")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_rfo34")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_mthfv")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_otd55")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_otd55")
+bus_name = "Music"
+
+[node name="VolumeSlider3" parent="." instance=ExtResource("1_ppwww")]
+layout_mode = 2
+offset_left = 743.0
+offset_top = 616.0
+offset_right = 1155.0
+offset_bottom = 676.0
+theme_override_icons/grabber = SubResource("AtlasTexture_rfo34")
+theme_override_icons/grabber_highlight = SubResource("AtlasTexture_rfo34")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_mthfv")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_otd55")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_otd55")
+bus_name = "Sfx"
+
+[node name="ExitSettingsButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 867.0
+offset_top = 681.0
+offset_right = 1046.0
+offset_bottom = 759.0
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_rfo34")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rfo34")
+script = ExtResource("2_ytfyc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture2D_ioc7n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect"]
+custom_minimum_size = Vector2(330, 450)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 25.0
+offset_right = -35.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 17
+
+[node name="Control" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Label" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Audio Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="Control3" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeSlider2" parent="MarginContainer/TextureRect/VBoxContainer" instance=ExtResource("1_ppwww")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="Music" type="Label" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="Sound effects" type="Label" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Sound effects"
+
+[node name="VolumeSlider3" parent="MarginContainer/TextureRect/VBoxContainer" instance=ExtResource("1_ppwww")]
+layout_mode = 2
+bus_name = "Sfx"
+
+[node name="Control4" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control6" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="DamageNumberButton" type="CheckButton" parent="."]
+offset_left = 1077.0
+offset_top = 256.0
+offset_right = 1182.0
+offset_bottom = 319.0
+scale = Vector2(0.764005, 0.764005)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1006d")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_avpda")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cvmp4")
+theme_override_icons/checked = SubResource("AtlasTexture_otd55")
+theme_override_icons/unchecked = SubResource("AtlasTexture_mthfv")
+button_pressed = true
+script = ExtResource("5_mthfv")
+
+[connection signal="toggled" from="DamageNumberButton" to="DamageNumberButton" method="_on_toggled"]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SpellCard" load_steps=4 format=3 uid="uid://uaf7vwf58rb6"]
+
+[ext_resource type="Texture2D" uid="uid://cv2egbcv5f11p" path="res://assets/Entities/cards/spell/Greek fire Hephaestus card.png" id="1_64vjg"]
+[ext_resource type="Texture2D" uid="uid://bcpppil136m0o" path="res://assets/Entities/cards/card_desc/Greek Fire Hephaestus Description.png" id="1_levwt"]
+[ext_resource type="Script" uid="uid://ke1opamcs7yi" path="res://custom_resources/card/spawning_card/spell_card/spell_card.gd" id="1_r1ed2"]
+
+[resource]
+script = ExtResource("1_r1ed2")
+instant_use = true
+entity_file_path = "uid://dle4n2v8ww2q"
+title = ""
+image = ExtResource("1_64vjg")
+description = ""
+sound_path = ""
+desc_image = ExtResource("1_levwt")
+metadata/_custom_type_script = "uid://ke1opamcs7yi"

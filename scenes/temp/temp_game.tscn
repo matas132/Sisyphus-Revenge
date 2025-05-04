@@ -1,0 +1,529 @@
+[gd_scene load_steps=89 format=3 uid="uid://debjaqsvxuusd"]
+
+[ext_resource type="PackedScene" uid="uid://cerqcco34sqtu" path="res://scenes/ui/gameplay/card_system/hand/hand.tscn" id="1_d1v85"]
+[ext_resource type="Script" uid="uid://bb8el1wdsrt4i" path="res://scenes/temp/temp_game.gd" id="1_yedrt"]
+[ext_resource type="Texture2D" uid="uid://gb8wtcvbud8s" path="res://assets/background/BGs2.png" id="2_1f7rt"]
+[ext_resource type="Script" uid="uid://6r1pew28srau" path="res://scenes/temp/gameplay.gd" id="2_u7ar4"]
+[ext_resource type="Script" uid="uid://bguln1wquwalr" path="res://scenes/temp/card_giver.gd" id="3_cqebn"]
+[ext_resource type="Script" uid="uid://cgdjhvta06vgn" path="res://scenes/temp/background.gd" id="3_ybn37"]
+[ext_resource type="Script" uid="uid://crmmdya24qvnn" path="res://custom_resources/card_spawning/card_spawn.gd" id="4_0k1l2"]
+[ext_resource type="Script" uid="uid://bmp667xsgfx3b" path="res://scenes/temp/entities.gd" id="4_7eh1x"]
+[ext_resource type="Resource" uid="uid://cctpgle5wmht8" path="res://custom_resources/card/cards/spell_cards/plague.tres" id="4_56eut"]
+[ext_resource type="Resource" uid="uid://d1578qw32ubbp" path="res://custom_resources/card/cards/spell_cards/empower.tres" id="4_ipqch"]
+[ext_resource type="Resource" uid="uid://dqqsa8t3i666m" path="res://custom_resources/card/cards/spell_cards/infinite_darkness.tres" id="4_ykoqj"]
+[ext_resource type="Resource" uid="uid://b688g043q2vqq" path="res://custom_resources/card/cards/spell_cards/black_hole.tres" id="5_ipqch"]
+[ext_resource type="PackedScene" uid="uid://cwy80g5iu3k2g" path="res://scenes/ui/gameplay/card_system/card/card.tscn" id="5_wx46d"]
+[ext_resource type="Resource" uid="uid://dl5yfkakn3oon" path="res://custom_resources/game_cards/entities/hoplite.tres" id="7_0k1l2"]
+[ext_resource type="PackedScene" uid="uid://4erosix0ra28" path="res://entities/game_entities/castle/castle.tscn" id="7_6unlb"]
+[ext_resource type="Resource" uid="uid://dahxrn3a70l2l" path="res://custom_resources/game_cards/entities/mage_card.tres" id="7_cbdk3"]
+[ext_resource type="Resource" uid="uid://dqjtwvixdtrfv" path="res://custom_resources/game_cards/entities/summoner.tres" id="7_iiyu1"]
+[ext_resource type="Resource" uid="uid://chv2yab8v4isw" path="res://custom_resources/card/cards/spell_cards/lightning_bolt.tres" id="8_gniue"]
+[ext_resource type="Script" uid="uid://d0yank25cmu1j" path="res://scenes/temp/enemy_spawner.gd" id="8_xapms"]
+[ext_resource type="Script" uid="uid://yf7jgdlapxay" path="res://scenes/temp/reroll_cards.gd" id="9_35i4t"]
+[ext_resource type="Resource" uid="uid://buie0olabm8aw" path="res://custom_resources/card/cards/spell_cards/nuclear_bomb.tres" id="9_p280t"]
+[ext_resource type="Script" uid="uid://bjapcpirpxe82" path="res://custom_resources/enemy_spawning/wave.gd" id="10_0k1l2"]
+[ext_resource type="Script" uid="uid://51par2err3tp" path="res://custom_resources/enemy_spawning/enemy_spawn.gd" id="11_gniue"]
+[ext_resource type="Texture2D" uid="uid://m7xd61b6x2d" path="res://assets/ui/progress bars/GameJam-ControlledChaos-UI-256-Reroll-Top.png" id="12_8n77e"]
+[ext_resource type="Resource" uid="uid://uaf7vwf58rb6" path="res://custom_resources/card/cards/spell_cards/flamethrower.tres" id="14_v7u5m"]
+[ext_resource type="Resource" uid="uid://0ah6asabvqbb" path="res://custom_resources/card/cards/spawning_cards/hippeus.tres" id="15_6hkk6"]
+[ext_resource type="Resource" uid="uid://4p2ws2bqlvu2" path="res://custom_resources/card/cards/spell_cards/necromancy.tres" id="15_27to6"]
+[ext_resource type="Resource" uid="uid://1y4xui5lmcu7" path="res://custom_resources/card/cards/spell_cards/whirlpool.tres" id="17_mvoub"]
+[ext_resource type="Resource" uid="uid://b26d06yuu8wa3" path="res://custom_resources/card/cards/spell_cards/whirlwind.tres" id="18_8wgds"]
+[ext_resource type="Resource" uid="uid://bd5i1cyy304wo" path="res://custom_resources/waves/game/easy_soldier.tres" id="22_pmgkh"]
+[ext_resource type="Script" uid="uid://pln7tyofp27i" path="res://scenes/temp/time_until_next_card.gd" id="23_ecorj"]
+[ext_resource type="Resource" uid="uid://bke1jemjy0eum" path="res://custom_resources/waves/game/med_soldier.tres" id="23_u7ar4"]
+[ext_resource type="Resource" uid="uid://bk1ojmegaxjfq" path="res://custom_resources/waves/game/hard_soldier.tres" id="24_1ywd2"]
+[ext_resource type="Resource" uid="uid://qml0y8cn6y26" path="res://custom_resources/waves/game/easy_archer.tres" id="25_18gkb"]
+[ext_resource type="Texture2D" uid="uid://culs8umojv52t" path="res://assets/ui/progress bars/GameJam-ControlledChaos-UI-256-GetCard-Back.png" id="25_pkdut"]
+[ext_resource type="Resource" uid="uid://u88tclooxi3s" path="res://custom_resources/waves/game/hard_arch_caval.tres" id="26_7eh1x"]
+[ext_resource type="Texture2D" uid="uid://c7ci7ccbnnkaw" path="res://assets/ui/progress bars/GameJam-ControlledChaos-UI-256-GetCard-Top.png" id="26_8n77e"]
+[ext_resource type="Resource" uid="uid://dhmllpgy60aaj" path="res://custom_resources/waves/game/easy_harpy.tres" id="27_fglg4"]
+[ext_resource type="Texture2D" uid="uid://cpe0rtnyox4rw" path="res://assets/ui/progress bars/GameJam-ControlledChaos-UI-256-GetCard-Progress.png" id="27_iq348"]
+[ext_resource type="Resource" uid="uid://jjm6oa3o8w7a" path="res://custom_resources/waves/game/easy_cyclops.tres" id="28_nt2c7"]
+[ext_resource type="Resource" uid="uid://bta4ee52m3e6d" path="res://custom_resources/waves/game/easy_gorgon.tres" id="29_3sbm1"]
+[ext_resource type="Resource" uid="uid://bd2rnwfmavdr8" path="res://custom_resources/waves/game/hard_cyc_gorg.tres" id="31_1ywd2"]
+[ext_resource type="Script" uid="uid://1p5qi568es5h" path="res://addons/audiom/classes/event_instance.gd" id="33_18gkb"]
+[ext_resource type="Script" uid="uid://cttb6nq5ah60n" path="res://scenes/temp/wall.gd" id="35_76t7e"]
+[ext_resource type="Script" uid="uid://c7tuc5fsaavix" path="res://scenes/temp/vfx_text.gd" id="35_fglg4"]
+[ext_resource type="Script" path="res://scenes/temp/out_of_bounds.gd" id="37_3sbm1"]
+[ext_resource type="Script" uid="uid://b5oxs8x4tbx0c" path="res://scenes/temp/rand_taunts.gd" id="38_1f7rt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8n77e"]
+
+[sub_resource type="Resource" id="Resource_56eut"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("7_0k1l2")
+weight = 10
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_6hkk6"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("7_cbdk3")
+weight = 12
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_4kmke"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("7_iiyu1")
+weight = 5
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_hkkiu"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("8_gniue")
+weight = 7
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_v7u5m"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("9_p280t")
+weight = 2
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_27to6"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("4_ykoqj")
+weight = 3
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_8wgds"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("5_ipqch")
+weight = 1
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_mvoub"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("4_ipqch")
+weight = 3
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_jl7m2"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("14_v7u5m")
+weight = 3
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_d4eom"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("15_27to6")
+weight = 3
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_wqjot"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("4_56eut")
+weight = 3
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_6ukjd"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("17_mvoub")
+weight = 4
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Resource" id="Resource_pmgkh"]
+script = ExtResource("4_0k1l2")
+card = ExtResource("18_8wgds")
+weight = 4
+metadata/_custom_type_script = "uid://crmmdya24qvnn"
+
+[sub_resource type="Curve2D" id="Curve2D_6unlb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1932, 340, 0, 0, 0, 0, 1925, 722, 0, 0, 0, 0, -16, 730, 0, 0, 0, 0, -14, 350)
+}
+point_count = 4
+
+[sub_resource type="Resource" id="Resource_35i4t"]
+script = ExtResource("11_gniue")
+enemy = 2
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_pkdut"]
+script = ExtResource("11_gniue")
+enemy = 6
+weight = 3
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_18gkb"]
+script = ExtResource("10_0k1l2")
+wave_length = 25.0
+enemy_spawn_frequency = 1.0
+enemies = Array[ExtResource("11_gniue")]([SubResource("Resource_35i4t"), SubResource("Resource_pkdut")])
+metadata/_custom_type_script = "uid://bjapcpirpxe82"
+
+[sub_resource type="Resource" id="Resource_7eh1x"]
+script = ExtResource("11_gniue")
+enemy = 0
+weight = 2
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_fglg4"]
+script = ExtResource("11_gniue")
+enemy = 3
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_nt2c7"]
+script = ExtResource("11_gniue")
+enemy = 5
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_3sbm1"]
+script = ExtResource("10_0k1l2")
+wave_length = 25.0
+enemy_spawn_frequency = 0.4
+enemies = Array[ExtResource("11_gniue")]([SubResource("Resource_7eh1x"), SubResource("Resource_fglg4"), SubResource("Resource_nt2c7")])
+metadata/_custom_type_script = "uid://bjapcpirpxe82"
+
+[sub_resource type="Resource" id="Resource_1f7rt"]
+script = ExtResource("11_gniue")
+enemy = 1
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_76t7e"]
+script = ExtResource("11_gniue")
+enemy = 2
+weight = 3
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_wx46d"]
+script = ExtResource("11_gniue")
+enemy = 4
+weight = 2
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_ecorj"]
+script = ExtResource("10_0k1l2")
+wave_length = 25.0
+enemy_spawn_frequency = 1.0
+enemies = Array[ExtResource("11_gniue")]([SubResource("Resource_1f7rt"), SubResource("Resource_76t7e"), SubResource("Resource_wx46d")])
+metadata/_custom_type_script = "uid://bjapcpirpxe82"
+
+[sub_resource type="Resource" id="Resource_ybn37"]
+script = ExtResource("11_gniue")
+enemy = 1
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_l27em"]
+script = ExtResource("11_gniue")
+enemy = 6
+weight = 2
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_6c0cy"]
+script = ExtResource("10_0k1l2")
+wave_length = 20.0
+enemy_spawn_frequency = 0.3
+enemies = Array[ExtResource("11_gniue")]([SubResource("Resource_ybn37"), SubResource("Resource_l27em")])
+metadata/_custom_type_script = "uid://bjapcpirpxe82"
+
+[sub_resource type="Resource" id="Resource_8n77e"]
+script = ExtResource("11_gniue")
+enemy = 0
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_iq348"]
+script = ExtResource("11_gniue")
+enemy = 1
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_vhifm"]
+script = ExtResource("11_gniue")
+enemy = 2
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_k2g7f"]
+script = ExtResource("11_gniue")
+enemy = 3
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_0t546"]
+script = ExtResource("11_gniue")
+enemy = 4
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_wwmxb"]
+script = ExtResource("11_gniue")
+enemy = 5
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_44i6p"]
+script = ExtResource("11_gniue")
+enemy = 6
+weight = 1
+metadata/_custom_type_script = "uid://51par2err3tp"
+
+[sub_resource type="Resource" id="Resource_gpl7c"]
+script = ExtResource("10_0k1l2")
+wave_length = 999.0
+enemy_spawn_frequency = 1.5
+enemies = Array[ExtResource("11_gniue")]([SubResource("Resource_8n77e"), SubResource("Resource_iq348"), SubResource("Resource_vhifm"), SubResource("Resource_k2g7f"), SubResource("Resource_0t546"), SubResource("Resource_wwmxb"), SubResource("Resource_44i6p")])
+metadata/_custom_type_script = "uid://bjapcpirpxe82"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nt2c7"]
+size = Vector2(1937, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sbm1"]
+size = Vector2(1937, 184.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xapms"]
+size = Vector2(42, 901)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7eh1x"]
+size = Vector2(42, 901)
+
+[node name="TempGame" type="Node2D" groups=["free_player_units"]]
+script = ExtResource("1_yedrt")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(1018, 0)
+current = true
+
+[node name="Blackbg" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -191.0
+offset_top = -110.0
+offset_right = 2202.0
+offset_bottom = 1212.0
+mouse_filter = 2
+color = Color(0, 0, 0.188235, 1)
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_1f7rt")
+script = ExtResource("3_ybn37")
+
+[node name="Gameplay" type="Node" parent="."]
+script = ExtResource("2_u7ar4")
+
+[node name="Label" type="Label" parent="Gameplay"]
+offset_left = 16.0
+offset_top = -312.0
+offset_right = 59.0
+offset_bottom = -277.0
+theme_override_font_sizes/font_size = 25
+text = "age"
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="Hand" parent="GameUI" instance=ExtResource("1_d1v85")]
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" parent="GameUI/Hand" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Card" parent="GameUI/Hand/HBoxContainer" index="0" instance=ExtResource("5_wx46d")]
+layout_mode = 2
+card_data = ExtResource("7_0k1l2")
+
+[node name="Card2" parent="GameUI/Hand/HBoxContainer" index="1" instance=ExtResource("5_wx46d")]
+layout_mode = 2
+card_data = ExtResource("7_cbdk3")
+
+[node name="Card3" parent="GameUI/Hand/HBoxContainer" index="2" instance=ExtResource("5_wx46d")]
+layout_mode = 2
+card_data = ExtResource("8_gniue")
+
+[node name="InputBlock" type="Control" parent="GameUI"]
+layout_mode = 3
+anchor_bottom = 0.0833333
+offset_right = 1907.0
+offset_bottom = 80.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RerollCards" type="Control" parent="GameUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 706.0
+offset_bottom = 706.0
+script = ExtResource("9_35i4t")
+
+[node name="RerollCardsButton" type="Button" parent="GameUI/RerollCards"]
+z_index = 1
+layout_mode = 0
+offset_left = 13.0
+offset_top = -85.0
+offset_right = 99.0
+offset_bottom = 1.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8n77e")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8n77e")
+disabled = true
+
+[node name="RerollCardsCooldownTimer" type="Timer" parent="GameUI/RerollCards"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="TimeUntilRerollCooldownOver" type="TextureProgressBar" parent="GameUI/RerollCards"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -87.0
+offset_right = 267.0
+offset_bottom = 169.0
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+step = 0.01
+value = 70.0
+fill_mode = 4
+texture_under = ExtResource("25_pkdut")
+texture_over = ExtResource("12_8n77e")
+texture_progress = ExtResource("27_iq348")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("4_7eh1x")
+
+[node name="CardGiver" type="Node" parent="."]
+script = ExtResource("3_cqebn")
+card_gain_interval = 5.0
+available_cards = Array[ExtResource("4_0k1l2")]([ExtResource("15_6hkk6"), SubResource("Resource_56eut"), SubResource("Resource_6hkk6"), SubResource("Resource_4kmke"), SubResource("Resource_hkkiu"), SubResource("Resource_v7u5m"), SubResource("Resource_27to6"), SubResource("Resource_8wgds"), SubResource("Resource_mvoub"), SubResource("Resource_jl7m2"), SubResource("Resource_d4eom"), SubResource("Resource_wqjot"), SubResource("Resource_6ukjd"), SubResource("Resource_pmgkh")])
+
+[node name="CardGainTimer" type="Timer" parent="CardGiver"]
+
+[node name="TimeUntilNextCard" type="TextureProgressBar" parent="CardGiver"]
+offset_left = 11.0
+offset_top = 500.0
+offset_right = 523.0
+offset_bottom = 1012.0
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+step = 0.01
+value = 70.0
+fill_mode = 4
+texture_under = ExtResource("25_pkdut")
+texture_over = ExtResource("26_8n77e")
+texture_progress = ExtResource("27_iq348")
+script = ExtResource("23_ecorj")
+
+[node name="Castle" parent="." instance=ExtResource("7_6unlb")]
+position = Vector2(953, 122)
+max_health = 10000.0
+
+[node name="EnemySpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6unlb")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemySpawnPath"]
+position = Vector2(1932, 340)
+rotation = 1.58912
+
+[node name="EnemySpawner" type="Node" parent="."]
+script = ExtResource("8_xapms")
+waves = Array[ExtResource("10_0k1l2")]([ExtResource("22_pmgkh"), ExtResource("23_u7ar4"), ExtResource("24_1ywd2"), ExtResource("25_18gkb"), ExtResource("26_7eh1x"), ExtResource("27_fglg4"), ExtResource("28_nt2c7"), ExtResource("29_3sbm1"), ExtResource("31_1ywd2"), SubResource("Resource_18gkb"), SubResource("Resource_3sbm1"), SubResource("Resource_ecorj"), SubResource("Resource_6c0cy"), SubResource("Resource_gpl7c")])
+
+[node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
+
+[node name="WaveTimer" type="Timer" parent="EnemySpawner"]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+script = ExtResource("35_76t7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(958.5, -12)
+shape = SubResource("RectangleShape2D_nt2c7")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(958.5, 888.25)
+shape = SubResource("RectangleShape2D_3sbm1")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-80, 417.5)
+shape = SubResource("RectangleShape2D_xapms")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1965, 452)
+shape = SubResource("RectangleShape2D_7eh1x")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+position = Vector2(0, 17.7)
+polygon = PackedVector2Array(1, 143.3, 270, 147.3, 513, 152.3, 761, 159.3, 797, 161.3, 798, -271.7, -39, -245.7)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Wall"]
+position = Vector2(1153, 17.7)
+polygon = PackedVector2Array(-59, 156.3, 58, 153.3, 485, 147.3, 759, 145.3, 791, 183.3, 764, -189.7, -49, -264.7)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Wall"]
+position = Vector2(717, 99)
+polygon = PackedVector2Array(76, -82, 383, -73, 388, -326, 52, -332)
+
+[node name="AmbienceIns" type="Node" parent="."]
+script = ExtResource("33_18gkb")
+event_path = "SFX/Ambience/WindAndThunder"
+metadata/_custom_type_script = "uid://1p5qi568es5h"
+
+[node name="MusicIns" type="Node" parent="."]
+script = ExtResource("33_18gkb")
+event_path = "Music/Battle"
+metadata/_custom_type_script = "uid://1p5qi568es5h"
+
+[node name="VFXText" type="Node" parent="."]
+script = ExtResource("35_fglg4")
+
+[node name="OutOfBounds" type="Area2D" parent="."]
+script = ExtResource("37_3sbm1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutOfBounds"]
+position = Vector2(-107, -97)
+polygon = PackedVector2Array(66, 202, 883, 201, 896, 97, 1204, 95, 1215, 233, 2056, 200, 3092, -1130, -973, -1049)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="OutOfBounds"]
+position = Vector2(223, 91)
+polygon = PackedVector2Array(1742, 910, 2869, 2040, 2907, -1378, 1739, -214)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="OutOfBounds"]
+position = Vector2(-1715, 1240)
+polygon = PackedVector2Array(223, 568, 4646, 774, 3718, -256, 1688, -250)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="OutOfBounds"]
+position = Vector2(-3797, 113)
+polygon = PackedVector2Array(2251, 1687, 3731, 976, 3718, -256, 2753, -1107)
+
+[node name="Damage" type="Timer" parent="OutOfBounds"]
+autostart = true
+
+[node name="RandTaunts" type="Node" parent="."]
+script = ExtResource("38_1f7rt")
+
+[node name="TauntTimer" type="Timer" parent="RandTaunts"]
+wait_time = 15.0
+autostart = true
+
+[connection signal="boss_wave" from="Gameplay" to="." method="_on_boss_wave"]
+[connection signal="pressed" from="GameUI/RerollCards/RerollCardsButton" to="GameUI/RerollCards" method="_on_reroll_cards_button_pressed"]
+[connection signal="timeout" from="GameUI/RerollCards/RerollCardsCooldownTimer" to="GameUI/RerollCards" method="_on_reroll_cards_cooldown_timer_timeout"]
+[connection signal="child_entered_tree" from="Entities" to="Entities" method="_on_child_entered_tree"]
+[connection signal="timeout" from="CardGiver/CardGainTimer" to="CardGiver" method="_on_card_gain_timer_timeout"]
+[connection signal="game_over" from="Castle" to="." method="_on_castle_game_over"]
+[connection signal="health_changed" from="Castle" to="Background" method="_on_castle_health_changed"]
+[connection signal="timeout" from="EnemySpawner/EnemySpawnTimer" to="EnemySpawner" method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="OutOfBounds/Damage" to="OutOfBounds" method="_on_damage_timeout"]
+[connection signal="timeout" from="RandTaunts/TauntTimer" to="RandTaunts" method="_on_taunt_timer_timeout"]
+
+[editable path="GameUI/Hand"]

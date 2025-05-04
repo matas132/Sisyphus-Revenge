@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SpellCard" load_steps=4 format=3 uid="uid://b6dwx17dln2aq"]
+
+[ext_resource type="Script" uid="uid://ke1opamcs7yi" path="res://custom_resources/card/spawning_card/spell_card/spell_card.gd" id="1_5rqlp"]
+
+[sub_resource type="Gradient" id="Gradient_mek24"]
+colors = PackedColorArray(0, 0, 0, 1, 0.907344, 0.907344, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pcmwx"]
+gradient = SubResource("Gradient_mek24")
+
+[resource]
+script = ExtResource("1_5rqlp")
+instant_use = true
+entity_file_path = "uid://c5c161q17fvnw"
+title = "Blade Storm"
+image = SubResource("GradientTexture2D_pcmwx")
+description = ""
+sound_path = ""
+metadata/_custom_type_script = "uid://ke1opamcs7yi"

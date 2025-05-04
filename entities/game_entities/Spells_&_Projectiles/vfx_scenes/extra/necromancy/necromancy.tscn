@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://cint15nkwdcuf"]
+
+[ext_resource type="Texture2D" uid="uid://bgaqbmwhjwiwx" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/extra/necromancy/skull_particle.png" id="1_qjijh"]
+
+[sub_resource type="Curve" id="Curve_p0p14"]
+_data = [Vector2(0, 0), 0.0, 12.5303, 0, 0, Vector2(0.198529, 1), 0.0, 0.0, 0, 0, Vector2(0.463235, 0.47191), -1.58469, -1.58469, 0, 0, Vector2(1, 0), -0.879175, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_0v76l"]
+curve = SubResource("Curve_p0p14")
+
+[sub_resource type="Gradient" id="Gradient_3du3t"]
+offsets = PackedFloat32Array(0, 0.454545, 1)
+colors = PackedColorArray(0.54507, 1, 0.773922, 1, 0.149719, 0.681329, 0.763819, 1, 0.761797, 1, 0.962129, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s0l2d"]
+gradient = SubResource("Gradient_3du3t")
+
+[sub_resource type="Curve" id="Curve_cg16l"]
+_limits = [0.0, 6.93094, 0.0, 3.0]
+_data = [Vector2(0, 0), 0.0, 3.85131, 0, 1, Vector2(1.21324, 4.67255), 2.77386, 2.77386, 0, 0, Vector2(3, 6.93094), 0.0472551, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jaoxv"]
+curve = SubResource("Curve_cg16l")
+
+[sub_resource type="Curve" id="Curve_i8gdp"]
+_data = [Vector2(0, 0), 0.0, 7.42215, 0, 0, Vector2(0.352941, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.011236), -3.99001, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_s0l2d"]
+curve = SubResource("Curve_i8gdp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hmfr3"]
+lifetime_randomness = 0.24
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 100.0
+angular_velocity_min = -0.500016
+angular_velocity_max = 0.499984
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -10.0
+radial_velocity_max = 9.99998
+gravity = Vector3(0, -150, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+damping_max = 30.0
+damping_curve = SubResource("CurveTexture_jaoxv")
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_s0l2d")
+color_ramp = SubResource("GradientTexture1D_s0l2d")
+alpha_curve = SubResource("CurveTexture_0v76l")
+hue_variation_min = -0.21
+hue_variation_max = 0.04
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 10
+texture = ExtResource("1_qjijh")
+lifetime = 3.0
+explosiveness = 0.1
+randomness = 0.43
+process_material = SubResource("ParticleProcessMaterial_hmfr3")

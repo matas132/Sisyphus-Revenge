@@ -1,0 +1,317 @@
+[gd_scene load_steps=44 format=3 uid="uid://cgbh07inosss0"]
+
+[ext_resource type="Script" uid="uid://bc8yyr3ipwd6e" path="res://scenes/autoloads/audio_handler.gd" id="1_f1b8q"]
+[ext_resource type="Script" uid="uid://di70lka6d5t5m" path="res://addons/audiom/classes/event.gd" id="2_1o0v7"]
+[ext_resource type="Script" uid="uid://dfhkotehfjifg" path="res://addons/audiom/classes/global_audio_parameter.gd" id="2_osheb"]
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="3_txsxe"]
+[ext_resource type="Resource" uid="uid://crb2h04mynywt" path="res://assets/audio/SoundEffects/ui/card_select.tres" id="4_46jbl"]
+[ext_resource type="Resource" uid="uid://b81pnlmoox1k7" path="res://assets/audio/SoundEffects/ui/card_cancel.tres" id="5_ywfm4"]
+[ext_resource type="Resource" uid="uid://blneiwhga5ruy" path="res://assets/audio/SoundEffects/spells/lightning_bolt.tres" id="6_4ub0f"]
+[ext_resource type="Resource" uid="uid://bvwbl4jn3epcm" path="res://assets/audio/SoundEffects/ui/card_hover.tres" id="6_mog1d"]
+[ext_resource type="Resource" uid="uid://w46auok3bwxw" path="res://assets/audio/SoundEffects/ui/card_new.tres" id="6_ywfm4"]
+[ext_resource type="Resource" uid="uid://frbfgv6to5bp" path="res://assets/audio/SoundEffects/spells/nuclear_bomb.tres" id="7_isi3e"]
+[ext_resource type="Resource" uid="uid://n55cohpc1v5l" path="res://assets/audio/SoundEffects/spells/summon.tres" id="7_yxvhq"]
+[ext_resource type="Resource" uid="uid://cl3ejmhbwu0qs" path="res://assets/audio/SoundEffects/spells/whirlpool.tres" id="8_13wlc"]
+[ext_resource type="Resource" uid="uid://8sa0jupe1v5g" path="res://assets/audio/SoundEffects/spells/whirlwind.tres" id="9_18eom"]
+[ext_resource type="Resource" uid="uid://g1ps24iwv0nn" path="res://assets/audio/SoundEffects/spells/necromancy.tres" id="10_do15u"]
+[ext_resource type="Resource" uid="uid://boxb1wkwdn0av" path="res://assets/audio/SoundEffects/spells/plague.tres" id="11_isi3e"]
+[ext_resource type="Resource" uid="uid://y51retl7r3tg" path="res://assets/audio/SoundEffects/spells/flamethrower.tres" id="12_do15u"]
+[ext_resource type="Resource" uid="uid://gaakgcicwjp0" path="res://assets/audio/SoundEffects/spells/infinite_darkness.tres" id="13_k7cci"]
+[ext_resource type="Resource" uid="uid://c2flb1c6tesav" path="res://assets/audio/SoundEffects/spells/black_hole.tres" id="14_46jbl"]
+[ext_resource type="Resource" uid="uid://dabc15tu45wbo" path="res://assets/audio/SoundEffects/spells/empower.tres" id="15_k7cci"]
+[ext_resource type="Resource" uid="uid://djeylwo3wjypl" path="res://assets/audio/SoundEffects/ambience/wind_and_thunder_comp.tres" id="16_46jbl"]
+[ext_resource type="Resource" uid="uid://bbrbe80higrek" path="res://assets/audio/SoundEffects/unit/attack_hit_pierce.tres" id="17_kph55"]
+[ext_resource type="Resource" uid="uid://bxdo3m2vb10bt" path="res://assets/audio/SoundEffects/unit/attack_hit_blunt.tres" id="18_qyb3b"]
+[ext_resource type="Resource" uid="uid://d0wwebo8t2myr" path="res://assets/audio/SoundEffects/unit/attack_bow_shoot.tres" id="18_xnqws"]
+[ext_resource type="Resource" uid="uid://dtndb8hxrob2i" path="res://assets/audio/SoundEffects/unit/attack_hit_blunt_heavy.tres" id="19_wocmo"]
+[ext_resource type="AudioStream" uid="uid://dinhwadtecuwu" path="res://assets/audio/SoundEffects/unit/attack_swing_01.ogg" id="21_ln3rd"]
+[ext_resource type="Resource" uid="uid://bwv5kdvnsqqu1" path="res://assets/audio/SoundEffects/unit/attack_hiss.tres" id="22_bnitt"]
+[ext_resource type="AudioStream" uid="uid://t7wegffhlx12" path="res://assets/audio/SoundEffects/unit/attack_swing_02.ogg" id="22_yxvhq"]
+[ext_resource type="AudioStream" uid="uid://dn71lkgsdwijw" path="res://assets/audio/SoundEffects/unit/attack_swing_03.ogg" id="23_uyjf0"]
+[ext_resource type="Resource" uid="uid://bbcci5h6yr8bl" path="res://assets/audio/SoundEffects/unit/chaos_scream.tres" id="28_6qbwl"]
+[ext_resource type="Resource" uid="uid://b02itlub8frbu" path="res://assets/audio/music/battle_comp.tres" id="28_uyjf0"]
+[ext_resource type="AudioStream" uid="uid://c4hketgwncfju" path="res://assets/audio/music/Main menu.mp3" id="29_8666v"]
+[ext_resource type="Resource" uid="uid://ctn8ww6ogdert" path="res://assets/audio/SoundEffects/unit/chaos_swing.tres" id="29_onlgy"]
+[ext_resource type="Script" uid="uid://cqjmyf666ola0" path="res://addons/audiom/classes/sound_parameter.gd" id="30_osheb"]
+[ext_resource type="Resource" uid="uid://bpapnp5wworwl" path="res://assets/audio/SoundEffects/unit/chaos_stun.tres" id="30_u4tye"]
+[ext_resource type="Script" uid="uid://6riv127out4" path="res://addons/audiom/classes/sound_composition.gd" id="31_6qbwl"]
+[ext_resource type="Resource" uid="uid://yudg1bodrmrn" path="res://assets/audio/SoundEffects/unit/chaos_raise_dead.tres" id="31_digom"]
+[ext_resource type="AudioStream" uid="uid://p5715vvp80ks" path="res://assets/audio/music/game over.mp3" id="37_lkuyy"]
+
+[sub_resource type="Resource" id="Resource_6qbwl"]
+script = ExtResource("2_osheb")
+name = "boss"
+initial_value = 0.0
+seek_time = 3.0
+metadata/_custom_type_script = "uid://dfhkotehfjifg"
+
+[sub_resource type="Resource" id="Resource_ykqtb"]
+script = ExtResource("3_txsxe")
+stream = Array[AudioStream]([ExtResource("21_ln3rd"), ExtResource("22_yxvhq"), ExtResource("23_uyjf0")])
+pool_behavior = 0
+priority = 0
+volume = 0.24
+volume_variation = 0.087
+volume_mod_mixing = 1
+bus = 3
+enter_time = 0.0
+leave_time = 0.2
+pitch = 0.0
+pitch_variation = 7.0
+pitch_mod_mixing = 0
+attenuation = 0.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"
+
+[sub_resource type="Resource" id="Resource_onlgy"]
+script = ExtResource("3_txsxe")
+stream = Array[AudioStream]([ExtResource("29_8666v")])
+pool_behavior = 0
+priority = 3
+volume = 1.0
+volume_variation = 0.0
+volume_mod_mixing = 1
+bus = 1
+enter_time = 0.0
+leave_time = 3.5
+pitch = 0.0
+pitch_variation = 0.0
+pitch_mod_mixing = 0
+attenuation = 1.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"
+
+[sub_resource type="Resource" id="Resource_u4tye"]
+script = ExtResource("31_6qbwl")
+layers = Array[ExtResource("3_txsxe")]([SubResource("Resource_onlgy")])
+volume = 0.8
+volume_mod_mixing = 1
+pitch = 0.0
+pitch_mod_mixing = 0
+repeat = false
+repeat_interval = 1.0
+interrupt_voices_on_stop = false
+override_enter_time = false
+enter_time = 0.0
+override_leave_time = false
+leave_time = 4.0
+parameters = Array[ExtResource("30_osheb")]([])
+affect_active_voices = true
+metadata/_custom_type_script = "uid://6riv127out4"
+
+[sub_resource type="Resource" id="Resource_jcdcr"]
+script = ExtResource("3_txsxe")
+stream = Array[AudioStream]([ExtResource("37_lkuyy")])
+pool_behavior = 0
+priority = 3
+volume = 1.0
+volume_variation = 0.0
+volume_mod_mixing = 1
+bus = 1
+enter_time = 0.0
+leave_time = 3.5
+pitch = 0.0
+pitch_variation = 0.0
+pitch_mod_mixing = 0
+attenuation = 1.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"
+
+[sub_resource type="Resource" id="Resource_3pywy"]
+script = ExtResource("31_6qbwl")
+layers = Array[ExtResource("3_txsxe")]([SubResource("Resource_jcdcr")])
+volume = 0.8
+volume_mod_mixing = 1
+pitch = 0.0
+pitch_mod_mixing = 0
+repeat = false
+repeat_interval = 1.0
+interrupt_voices_on_stop = false
+override_enter_time = false
+enter_time = 0.0
+override_leave_time = false
+leave_time = 4.0
+parameters = Array[ExtResource("30_osheb")]([])
+affect_active_voices = true
+metadata/_custom_type_script = "uid://6riv127out4"
+
+[node name="AudioHandler" type="Node" node_paths=PackedStringArray("event_tree")]
+script = ExtResource("1_f1b8q")
+channel_count_2d = 128
+event_tree = NodePath("Events")
+global_parameters = Array[ExtResource("2_osheb")]([SubResource("Resource_6qbwl")])
+metadata/_custom_type_script = "uid://bw6s282f2df6"
+
+[node name="StreamPlayers" type="Node" parent="."]
+
+[node name="Events" type="Node" parent="."]
+
+[node name="SFX" type="Node" parent="Events"]
+
+[node name="UI" type="Node" parent="Events/SFX"]
+
+[node name="Choose" type="Node" parent="Events/SFX/UI"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("6_mog1d")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Select" type="Node" parent="Events/SFX/UI"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("4_46jbl")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="CardHover" type="Node" parent="Events/SFX/UI"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("6_mog1d")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="CardSelect" type="Node" parent="Events/SFX/UI"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("4_46jbl")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="CardCancel" type="Node" parent="Events/SFX/UI"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("5_ywfm4")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="CardNew" type="Node" parent="Events/SFX/UI"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("6_ywfm4")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Spells" type="Node" parent="Events/SFX"]
+
+[node name="Summon" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("7_yxvhq")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="LightningBolt" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("6_4ub0f")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="NuclearBomb" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("7_isi3e")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Whirlpool" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("8_13wlc")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Whirlwind" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("9_18eom")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Necromancy" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("10_do15u")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Plague" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("11_isi3e")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Flamethrower" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("12_do15u")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="InfiniteDarkness" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("13_k7cci")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="BlackHole" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("14_46jbl")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Empower" type="Node" parent="Events/SFX/Spells"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("15_k7cci")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Unit" type="Node" parent="Events/SFX"]
+
+[node name="AttackHitPierce" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("17_kph55")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="AttackHitBlunt" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("18_qyb3b")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="AttackHitBluntHeavy" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("19_wocmo")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="AttackSwing" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = SubResource("Resource_ykqtb")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="AttackBowShoot" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("18_xnqws")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="AttackHiss" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("22_bnitt")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="ChaosScream" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("28_6qbwl")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="ChaosSwing" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("29_onlgy")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="ChaosStun" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("30_u4tye")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="ChaosRaiseDead" type="Node" parent="Events/SFX/Unit"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("31_digom")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Ambience" type="Node" parent="Events/SFX"]
+
+[node name="WindAndThunder" type="Node" parent="Events/SFX/Ambience"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("16_46jbl")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Music" type="Node" parent="Events"]
+
+[node name="Battle" type="Node" parent="Events/Music"]
+script = ExtResource("2_1o0v7")
+sound = ExtResource("28_uyjf0")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="Title" type="Node" parent="Events/Music"]
+script = ExtResource("2_1o0v7")
+sound = SubResource("Resource_u4tye")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"
+
+[node name="GameOver" type="Node" parent="Events/Music"]
+script = ExtResource("2_1o0v7")
+sound = SubResource("Resource_3pywy")
+metadata/_custom_type_script = "uid://di70lka6d5t5m"

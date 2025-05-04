@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://c02t6ck4dv1g3"]
+
+[ext_resource type="Texture2D" uid="uid://h3sba5w3aljt" path="res://assets/Entities/spells/lightning.png" id="1_m3sgk"]
+[ext_resource type="Texture2D" uid="uid://ij1y1rlx0vd7" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/lightningBolt/lightning_lineV1.png" id="2_hhcnv"]
+[ext_resource type="Texture2D" uid="uid://d3ipi1t3cco37" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/lightningBolt/lightning_lineV2.png" id="3_uqb20"]
+[ext_resource type="Texture2D" uid="uid://nsosjhmqif02" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/lightningBolt/lightning_lineV3.png" id="4_717my"]
+[ext_resource type="Texture2D" uid="uid://dslxa5flfgm40" path="res://entities/game_entities/Spells_&_Projectiles/vfx_scenes/lightningBolt/lightning_lineV4.png" id="5_wu4cw"]
+
+[sub_resource type="Curve" id="Curve_m3sgk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.991848, 0.913688), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_mm330"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_m3sgk")]
+}
+
+[sub_resource type="Animation" id="Animation_m3sgk"]
+resource_name = "start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.266667, 1.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_hhcnv"), ExtResource("3_uqb20"), ExtResource("4_717my"), ExtResource("5_wu4cw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mlu8e"]
+_data = {
+&"RESET": SubResource("Animation_mm330"),
+&"start": SubResource("Animation_m3sgk")
+}
+
+[node name="Lightning" type="Line2D"]
+top_level = true
+z_index = 1
+texture_repeat = 2
+width = 15.0
+width_curve = SubResource("Curve_m3sgk")
+texture = ExtResource("1_m3sgk")
+texture_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mlu8e")
+}
+autoplay = "start"

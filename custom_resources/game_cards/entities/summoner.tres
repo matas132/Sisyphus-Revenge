@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpawningCard" load_steps=3 format=3 uid="uid://dqjtwvixdtrfv"]
+
+[ext_resource type="Script" uid="uid://yg3ci5nyaj1c" path="res://custom_resources/card/spawning_card/spawning_card.gd" id="1_71s7o"]
+[ext_resource type="Texture2D" uid="uid://d3wbkelhxlkty" path="res://assets/Entities/cards/unit/Chiliarch card.png" id="1_mowu2"]
+
+[resource]
+script = ExtResource("1_71s7o")
+entity_file_path = "uid://yb3p4q4qxbie"
+title = ""
+image = ExtResource("1_mowu2")
+description = ""
+sound_path = "SFX/Spells/Summon"
+metadata/_custom_type_script = "uid://yg3ci5nyaj1c"

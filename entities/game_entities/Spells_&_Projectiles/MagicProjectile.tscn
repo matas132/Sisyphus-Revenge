@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://jlg2pa040rfb"]
+
+[ext_resource type="Script" uid="uid://cy0wwuaf6fv23" path="res://entities/game_entities/Spells_&_Projectiles/magic_projectile.gd" id="1_6tykx"]
+[ext_resource type="Texture2D" uid="uid://cg6sov62n3qup" path="res://assets/Entities/projectile/GameJam-ControlledChaos-Unit-Ally-Arrow.png" id="2_4q6yw"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="3_sna3m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tykx"]
+radius = 7.0
+
+[node name="MagicProjectile" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_6tykx")
+speed = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_4q6yw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6tykx")
+
+[node name="AttackSound" type="Node2D" parent="."]
+script = ExtResource("3_sna3m")
+event_path = "SFX/Unit/AttackHitPierce"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

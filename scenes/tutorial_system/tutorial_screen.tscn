@@ -1,0 +1,113 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbdu6i25r6gh5"]
+
+[ext_resource type="Script" uid="uid://c441boisohktq" path="res://scenes/tutorial_system/tutorial_screen.gd" id="1_be536"]
+
+[sub_resource type="Gradient" id="Gradient_b1cu2"]
+colors = PackedColorArray(0, 0, 0, 1, 1.8049e-08, 0.209841, 0.0867807, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3sh55"]
+gradient = SubResource("Gradient_b1cu2")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_trf85"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6amcm"]
+gradient = SubResource("Gradient_trf85")
+
+[node name="TutorialScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_be536")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3sh55")
+
+[node name="Black" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="HighLight1" type="PointLight2D" parent="."]
+position = Vector2(899, 413)
+scale = Vector2(4.125, 4.20313)
+energy = 1.5
+texture = SubResource("GradientTexture2D_6amcm")
+
+[node name="Text1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 182.0
+offset_right = 522.0
+offset_bottom = 224.0
+theme_override_font_sizes/font_size = 30
+text = "This is a tutorial, click on screen to proceed"
+
+[node name="HighLight2" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(331, 469)
+scale = Vector2(4.125, 4.20313)
+energy = 1.5
+texture = SubResource("GradientTexture2D_6amcm")
+
+[node name="Text2" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 582.0
+offset_top = 233.0
+offset_right = 931.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 30
+text = "This highlights a specific thing and explains it"
+autowrap_mode = 2
+
+[node name="HighLight3" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(649.5, 124.5)
+scale = Vector2(18.7656, 3.23438)
+energy = 1.5
+texture = SubResource("GradientTexture2D_6amcm")
+
+[node name="Text3" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 582.0
+offset_top = 233.0
+offset_right = 931.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 30
+text = "IS this the crusty crab?"
+autowrap_mode = 2
+
+[node name="HighLight4" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(769.5, 519)
+scale = Vector2(9.73437, 3.40625)
+energy = 1.5
+texture = SubResource("GradientTexture2D_6amcm")
+
+[node name="Text4" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 820.0
+offset_top = 573.0
+offset_right = 1169.0
+offset_bottom = 705.0
+theme_override_font_sizes/font_size = 30
+text = "No this is patrick"
+autowrap_mode = 2

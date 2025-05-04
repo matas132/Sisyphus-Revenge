@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://4erosix0ra28"]
+
+[ext_resource type="Script" uid="uid://b2g80kxqgw1h" path="res://entities/game_entities/castle/castle.gd" id="1_odmqu"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_1shc1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_01ubj"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odmqu"]
+size = Vector2(279, 200)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1shc1"]
+radius = 541.937
+
+[node name="Castle" type="CharacterBody2D" groups=["player_castle"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_odmqu")
+max_health = 4000.0
+metadata/_custom_type_script = "uid://h6hiq3j3h1nh"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+texture = SubResource("PlaceholderTexture2D_01ubj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.5, 0)
+shape = SubResource("RectangleShape2D_odmqu")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_1shc1")]
+z_index = -1
+offset_left = -94.0
+offset_top = 109.0
+offset_right = 96.0
+offset_bottom = 129.0
+
+[node name="DefenseArea2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseArea2D"]
+shape = SubResource("CircleShape2D_1shc1")
+debug_color = Color(0, 0.6, 0.701961, 0.0156863)
+
+[connection signal="body_entered" from="DefenseArea2D" to="." method="_on_defense_area_body_entered"]

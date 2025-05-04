@@ -1,0 +1,212 @@
+[gd_scene load_steps=17 format=3 uid="uid://b8llenv4yy7sq"]
+
+[ext_resource type="Script" uid="uid://bkl7tpd6bfe2i" path="res://scenes/scene_manager/scene_manager.gd" id="1_gdtpy"]
+[ext_resource type="PackedScene" uid="uid://4twbdn06w2a8" path="res://scenes/ui/menus/title_screen/title_screen.tscn" id="2_bloxe"]
+[ext_resource type="Script" uid="uid://doy2yjtwjvcti" path="res://scenes/scene_manager/menu.gd" id="2_ccqlq"]
+[ext_resource type="PackedScene" uid="uid://c03h6ygt7ddxy" path="res://scenes/ui/menus/settings/audio_settings.tscn" id="4_3f6cy"]
+[ext_resource type="PackedScene" uid="uid://d1xetuvlgpv3a" path="res://scenes/ui/menus/pause/pause_menu.tscn" id="5_apfqm"]
+[ext_resource type="PackedScene" uid="uid://e5oe48t3vehs" path="res://scenes/ui/menus/settings/settings_menu.tscn" id="5_pxq06"]
+[ext_resource type="Script" uid="uid://bxv3a7eu2yjr2" path="res://scenes/scene_manager/game_over_menu.gd" id="8_8lk5j"]
+[ext_resource type="Script" uid="uid://btl84wfsm0bhs" path="res://scenes/scene_manager/saver_loader.gd" id="8_m5l2r"]
+[ext_resource type="FontFile" uid="uid://nah606yjdt2k" path="res://assets/font/AntroposFreefont-BW2G.ttf" id="8_qbhkl"]
+[ext_resource type="Texture2D" uid="uid://bsanbl3xgjmkl" path="res://assets/background/Cutscene5.png" id="9_i67ie"]
+[ext_resource type="Script" uid="uid://bwv1tv7obgk5c" path="res://scenes/scene_manager/try_again_button.gd" id="10_f1wt5"]
+[ext_resource type="Script" uid="uid://wsf3b778ihef" path="res://scenes/scene_manager/quit_button.gd" id="10_s4f0h"]
+[ext_resource type="Texture2D" uid="uid://tw5odntjjofp" path="res://assets/background/Cutscene1.png" id="13_4becw"]
+[ext_resource type="Script" uid="uid://1p5qi568es5h" path="res://addons/audiom/classes/event_instance.gd" id="13_awvii"]
+[ext_resource type="Script" uid="uid://4qgb730xdm1d" path="res://scenes/scene_manager/game_completed_menu.gd" id="13_dvp3r"]
+[ext_resource type="Script" uid="uid://bhjs754keqbm6" path="res://scenes/scene_manager/try_again_button_1.gd" id="14_auk4n"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_gdtpy")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 5
+script = ExtResource("2_ccqlq")
+
+[node name="TitleScreen" parent="Menu" instance=ExtResource("2_bloxe")]
+
+[node name="PauseMenu" parent="Menu" instance=ExtResource("5_apfqm")]
+process_mode = 3
+visible = false
+
+[node name="SettingsMenu" parent="Menu" instance=ExtResource("5_pxq06")]
+visible = false
+
+[node name="AudioSettings" parent="Menu" instance=ExtResource("4_3f6cy")]
+visible = false
+
+[node name="SaverLoader" type="Node" parent="."]
+script = ExtResource("8_m5l2r")
+
+[node name="GameScenes" type="Node" parent="."]
+
+[node name="GameOverMenu" type="CanvasLayer" parent="GameScenes"]
+visible = false
+script = ExtResource("8_8lk5j")
+
+[node name="Control" type="Control" parent="GameScenes/GameOverMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameScenes/GameOverMenu/Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("9_i67ie")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="GameScenes/GameOverMenu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.443137)
+
+[node name="Label" type="Label" parent="GameScenes/GameOverMenu/Control"]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 93.0
+offset_right = 1236.0
+offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("8_qbhkl")
+theme_override_font_sizes/font_size = 90
+text = "Game over"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameScenes/GameOverMenu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -193.0
+offset_right = 201.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="ScoreLabel" type="Label" parent="GameScenes/GameOverMenu/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_qbhkl")
+theme_override_font_sizes/font_size = 50
+text = "Score: 9001"
+
+[node name="TryAgainButton" type="Button" parent="GameScenes/GameOverMenu/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_qbhkl")
+theme_override_font_sizes/font_size = 40
+text = "Try again"
+script = ExtResource("10_f1wt5")
+
+[node name="QuitButton" type="Button" parent="GameScenes/GameOverMenu/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_qbhkl")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+script = ExtResource("10_s4f0h")
+
+[node name="GameCompletedMenu" type="CanvasLayer" parent="GameScenes"]
+visible = false
+script = ExtResource("13_dvp3r")
+
+[node name="Control" type="Control" parent="GameScenes/GameCompletedMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameScenes/GameCompletedMenu/Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("13_4becw")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="GameScenes/GameCompletedMenu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.443137)
+
+[node name="Label" type="Label" parent="GameScenes/GameCompletedMenu/Control"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 96.0
+offset_right = 851.0
+offset_bottom = 466.0
+theme_override_fonts/font = ExtResource("8_qbhkl")
+theme_override_font_sizes/font_size = 90
+text = "Thank you for playing!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameScenes/GameCompletedMenu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -661.0
+offset_top = -164.0
+offset_right = -354.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="ScoreLabel" type="Label" parent="GameScenes/GameCompletedMenu/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_qbhkl")
+theme_override_font_sizes/font_size = 50
+text = "Score: 9001"
+
+[node name="TryAgainButton" type="Button" parent="GameScenes/GameCompletedMenu/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_qbhkl")
+theme_override_font_sizes/font_size = 40
+text = "Try again"
+script = ExtResource("14_auk4n")
+
+[node name="QuitButton" type="Button" parent="GameScenes/GameCompletedMenu/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("8_qbhkl")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+script = ExtResource("10_s4f0h")
+
+[node name="Video" type="CanvasLayer" parent="GameScenes"]
+
+[node name="TitleMusic" type="Node" parent="."]
+script = ExtResource("13_awvii")
+event_path = "Music/Title"
+metadata/_custom_type_script = "uid://1p5qi568es5h"
+
+[node name="GameOverMusic" type="Node" parent="."]
+script = ExtResource("13_awvii")
+event_path = "Music/GameOver"
+metadata/_custom_type_script = "uid://1p5qi568es5h"
+
+[connection signal="pressed" from="GameScenes/GameOverMenu/Control/VBoxContainer/TryAgainButton" to="GameScenes/GameOverMenu/Control/VBoxContainer/TryAgainButton" method="_on_pressed"]
+[connection signal="pressed" from="GameScenes/GameOverMenu/Control/VBoxContainer/QuitButton" to="GameScenes/GameOverMenu/Control/VBoxContainer/QuitButton" method="_on_pressed"]
+[connection signal="pressed" from="GameScenes/GameCompletedMenu/Control/VBoxContainer/TryAgainButton" to="GameScenes/GameCompletedMenu/Control/VBoxContainer/TryAgainButton" method="_on_pressed"]
+[connection signal="pressed" from="GameScenes/GameCompletedMenu/Control/VBoxContainer/QuitButton" to="GameScenes/GameCompletedMenu/Control/VBoxContainer/QuitButton" method="_on_pressed"]

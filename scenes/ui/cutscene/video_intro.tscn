@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://di0p86vwaquxn"]
+
+[ext_resource type="VideoStream" uid="uid://cwldxaimyinfy" path="res://assets/video/intro_FINAL.ogv" id="1_ft102"]
+[ext_resource type="Script" uid="uid://bedyj7gvnunuy" path="res://scenes/ui/cutscene/video.gd" id="2_60r1y"]
+
+[node name="VideoIntro" type="VideoStreamPlayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1240.0
+offset_bottom = 680.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+focus_mode = 2
+stream = ExtResource("1_ft102")
+autoplay = true
+script = ExtResource("2_60r1y")

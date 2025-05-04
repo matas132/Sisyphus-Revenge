@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardSpawn" load_steps=3 format=3 uid="uid://0ah6asabvqbb"]
+
+[ext_resource type="Resource" uid="uid://ds60xmqkncp4y" path="res://custom_resources/game_cards/entities/hippeus.tres" id="1_cjods"]
+[ext_resource type="Script" uid="uid://crmmdya24qvnn" path="res://custom_resources/card_spawning/card_spawn.gd" id="1_iqxp4"]
+
+[resource]
+script = ExtResource("1_iqxp4")
+card = ExtResource("1_cjods")
+weight = 11
+metadata/_custom_type_script = "uid://crmmdya24qvnn"

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dle4n2v8ww2q"]
+
+[ext_resource type="Script" uid="uid://hvubw1trxw6o" path="res://entities/game_entities/Spells_&_Projectiles/flamethrower/flamethrower.gd" id="1_5dcps"]
+
+[node name="Flamethrower" type="Node2D"]
+script = ExtResource("1_5dcps")
+
+[node name="DPStimer" type="Timer" parent="."]
+
+[node name="DurationTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DPStimer" to="." method="_on_dp_stimer_timeout"]
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

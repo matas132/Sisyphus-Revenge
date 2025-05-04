@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawningCard" load_steps=3 format=3 uid="uid://brwolkrrs6ug2"]
+
+[ext_resource type="Texture2D" uid="uid://17vqvhfbluka" path="res://icon.svg" id="1_nldrb"]
+[ext_resource type="Script" uid="uid://yg3ci5nyaj1c" path="res://custom_resources/card/spawning_card/spawning_card.gd" id="1_qrap3"]
+
+[resource]
+script = ExtResource("1_qrap3")
+entity_file_path = "uid://bkq1ftgwajaf2"
+title = "Test card"
+image = ExtResource("1_nldrb")
+metadata/_custom_type_script = "uid://yg3ci5nyaj1c"

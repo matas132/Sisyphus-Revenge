@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://djluaaetv0kq1"]
+
+[ext_resource type="Script" uid="uid://c8m1llq0p5jmu" path="res://scenes/autoloads/global_var.gd" id="1_07qgn"]
+[ext_resource type="Script" uid="uid://doobwhaxwih0i" path="res://scenes/autoloads/game_state.gd" id="2_ctt7r"]
+[ext_resource type="Script" uid="uid://ckjliin2gljhm" path="res://scenes/autoloads/settings.gd" id="3_m27fg"]
+
+[node name="GlobalVar" type="Node"]
+script = ExtResource("1_07qgn")
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("2_ctt7r")
+
+[node name="Settings" type="Node" parent="."]
+script = ExtResource("3_m27fg")

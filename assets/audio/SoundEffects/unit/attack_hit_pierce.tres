@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=5 format=3 uid="uid://bbrbe80higrek"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_rnl0p"]
+[ext_resource type="AudioStream" uid="uid://sboxc10rq3l8" path="res://assets/audio/SoundEffects/unit/attack_hit_pierce_01.ogg" id="2_huk0t"]
+[ext_resource type="AudioStream" uid="uid://cs1bqw10mf3ns" path="res://assets/audio/SoundEffects/unit/attack_hit_pierce_02.ogg" id="3_xq2ws"]
+[ext_resource type="AudioStream" uid="uid://bq603qyk6f7gf" path="res://assets/audio/SoundEffects/unit/attack_hit_pierce_03.ogg" id="4_ns1nu"]
+
+[resource]
+script = ExtResource("1_rnl0p")
+stream = Array[AudioStream]([ExtResource("2_huk0t"), ExtResource("3_xq2ws"), ExtResource("4_ns1nu")])
+pool_behavior = 0
+priority = 0
+volume = 0.41
+volume_variation = 0.087
+volume_mod_mixing = 1
+bus = 3
+enter_time = 0.0
+leave_time = 0.2
+pitch = 0.0
+pitch_variation = 3.91
+pitch_mod_mixing = 0
+attenuation = 0.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"

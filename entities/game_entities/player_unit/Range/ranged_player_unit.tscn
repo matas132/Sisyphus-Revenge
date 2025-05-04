@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://soh8gsn8rf0q"]
+
+[ext_resource type="Script" uid="uid://c5wx14yfk7g1x" path="res://entities/game_entities/player_unit/Range/ranged_player_unit.gd" id="1_o58i3"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="2_81q8h"]
+[ext_resource type="PackedScene" uid="uid://jlg2pa040rfb" path="res://entities/game_entities/Spells_&_Projectiles/MagicProjectile.tscn" id="2_u2rj5"]
+[ext_resource type="Texture2D" uid="uid://jkegte3cn1a8" path="res://assets/Entities/player units cards/GameJam-ControlledChaos-Unit-Ally-Toxotes.png" id="3_u2rj5"]
+[ext_resource type="PackedScene" uid="uid://cfthmyc81vu54" path="res://entities/game_entities/visuals/archer_a.tscn" id="5_fpwtw"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="6_klbmh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o58i3"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_81q8h"]
+radius = 578.739
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2rj5"]
+radius = 65.0
+
+[node name="RangedPlayerUnit" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_o58i3")
+preferred_distance = 175.0
+projectile_scene = ExtResource("2_u2rj5")
+ranged_damage = 30.0
+damage_rate = 2.0
+damage = 5.0
+max_health = 175.0
+metadata/_custom_type_script = "uid://5lyabt5xavge"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_u2rj5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o58i3")
+debug_color = Color(0, 0, 0, 0.42)
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_81q8h")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_u2rj5")
+debug_color = Color(0.993064, 0.860984, 0.886357, 0.42)
+
+[node name="HealthBar" parent="." instance=ExtResource("2_81q8h")]
+
+[node name="DamageRate" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReactTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Sprite" parent="." instance=ExtResource("5_fpwtw")]
+position = Vector2(-3.33333, 28.3333)
+
+[node name="AttackSound" type="Node2D" parent="."]
+script = ExtResource("6_klbmh")
+event_path = "SFX/Unit/AttackBowShoot"
+
+[node name="SwingSound" type="Node2D" parent="."]
+script = ExtResource("6_klbmh")
+event_path = "SFX/Unit/AttackSwing"
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="DamageRate" to="." method="_on_damage_rate_timeout"]
+[connection signal="timeout" from="ReactTimer" to="." method="_on_react_timeout"]

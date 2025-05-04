@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1r0iwxljhmah"]
+
+[ext_resource type="Script" uid="uid://ds23vso2irf3f" path="res://entities/game_entities/enemy/Boss/chaos/right_hand/right_hand.gd" id="1_5emt2"]
+[ext_resource type="PackedScene" uid="uid://cf47u24es7ac6" path="res://entities/game_entities/enemy/Boss/minion/enemy_minion.tscn" id="2_lgm3p"]
+[ext_resource type="PackedScene" uid="uid://c33ic86sforsv" path="res://scenes/ui/gameplay/entities/health_bar/health_bar.tscn" id="3_lgm3p"]
+[ext_resource type="PackedScene" uid="uid://kp77c0ymyxbc" path="res://entities/game_entities/visuals/Chaos/chaos_hand_right_graphics.tscn" id="4_nxf3i"]
+[ext_resource type="Script" uid="uid://k536wrjv8lmy" path="res://addons/audiom/classes/event_instance_2d.gd" id="5_ffhh4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sanc4"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgm3p"]
+radius = 320.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffhh4"]
+radius = 160.0
+
+[node name="RightHand" type="CharacterBody2D"]
+script = ExtResource("1_5emt2")
+summons_per_attack = 7
+minion_scene = ExtResource("2_lgm3p")
+teleport_every = 5
+base_cooldown = 3.0
+max_health = 2000.0
+health = 2000.0
+metadata/_custom_type_script = "uid://crqan3j48afjr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sanc4")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_lgm3p")
+debug_color = Color(0, 0.6, 0.701961, 0.14902)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_ffhh4")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_lgm3p")]
+
+[node name="DamageRate" type="Timer" parent="."]
+
+[node name="Sprite" parent="." instance=ExtResource("4_nxf3i")]
+position = Vector2(0, 42)
+scale = Vector2(-1, 1)
+
+[node name="RaiseDead" type="Node2D" parent="."]
+script = ExtResource("5_ffhh4")
+event_path = "SFX/Unit/ChaosRaiseDead"
+metadata/_custom_type_script = "uid://k536wrjv8lmy"

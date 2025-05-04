@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AudioMSound" load_steps=3 format=3 uid="uid://c2flb1c6tesav"]
+
+[ext_resource type="Script" uid="uid://c02tmj7i0alvl" path="res://addons/audiom/classes/sound.gd" id="1_01ov0"]
+[ext_resource type="AudioStream" uid="uid://csd6x2nlte77j" path="res://assets/audio/SoundEffects/spells/black_hole.ogg" id="2_jxcfn"]
+
+[resource]
+script = ExtResource("1_01ov0")
+stream = Array[AudioStream]([ExtResource("2_jxcfn")])
+pool_behavior = 0
+priority = 0
+volume = 1.0
+volume_variation = 0.0
+volume_mod_mixing = 1
+bus = 2
+enter_time = 0.0
+leave_time = 0.2
+pitch = 0.0
+pitch_variation = 1.06
+pitch_mod_mixing = 0
+attenuation = 0.0
+max_distance = 2000.0
+panning_strength = 1.0
+metadata/_custom_type_script = "uid://c02tmj7i0alvl"
